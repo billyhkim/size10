@@ -1,7 +1,10 @@
 import React from 'react';
+import { Button } from 'reactstrap';
 
 export default class App extends React.Component {
   render() {
-    return <div>Welcome to size10</div>;
+    return (
+      <Button color="danger">Danger!</Button>
+    );
   }
 }
