@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "brand": "Nike",
+    "name": "Air Max 1",
+    "colorway": "Fourth of July",
+    "price": 14000,
+    "image": "https://bit.ly/2XtEeup",
+    "description": "As a follow up to the Air Max 1 “USA” release in 2003, \"Fourth of July\" amplifies the OG 2003 colorway with an updated narrative. For a fresh take, this latest Air Max 1 arrives with inverted color blocking compared to the original and three different sets of laces so you can style it your way. The woven tongue features a patch with 13 stars around the \"NIKE AIR\" logo and an American flag is proudly showcased on the heel."
+  },
+  {
+    "id": 2,
+    "brand": "Nike",
+    "name": "Zoom Lebron III",
+    "colorway": "Houston",
+    "price": 17500,
+    "image": "https://bit.ly/2X3Rdia",
+    "description": "Introduced in 2005, the Zoom LeBron III equipped a young LeBron James with everything he needed to jumpstart his now storied basketball career. The performance-driven basketball silhouette would transcend its original purpose to become a fan-favorite LeBron silhouette. Continuing the model's retro return, the Zoom LeBron III now arrives in the once player exclusive “Houston” colorway."
+  },
+  {
+    "id": 3,
+    "brand": "Nike",
+    "name": "Air Jordan I",
+    "colorway": "Black/White/Sail/Gym Red",
+    "price": 16000,
+    "image": "https://bit.ly/2LbQrNA",
+    "description": "Until the Air Jordan I, game shoes in the league were mostly white due to the strict rules at the time. To differentiate itself from any other shoe, the Air Jordan I was released in multiple colors that led to a $5000 dollar fine per game and helped lay the foundation for what sneaker culture would become. Paying homage to Jordan Brand and MJ’s heritage, this Air Jordan I features black, white, Sail and Gym Red for a new twist on familiar color blocking."
+  },
+  {
+    "id": 4,
+    "brand": "Nike",
+    "name": "Drop-Type",
+    "colorway": "Summit White",
+    "price": 7500,
+    "image": "https://bit.ly/2LgR8VW",
+    "description": "Part of the N354 family, the Nike Drop-Type LX takes inspiration from classic tennis shoes in the NikeCourt collection. Its distinct design lines, autoclave tooling and low-profile upper channel a raw, experimental edge on an iconic look. The silhouette blends various materials on the upper and handwritten-esque \"N.354\" branding is featured above the elevated midsole."
+  },
+  {
+    "id": 5,
+    "brand": "Nike",
+    "name": "AF1-Type",
+    "colorway": "Summit White",
+    "price": 14000,
+    "image": "https://bit.ly/2KCWMCw",
+    "description": "Part of the N354 family, the Nike AF1-Type reimagines the classic streetwear staple with a hand-made aesthetic. The silhouette utilizes transparent materials to show off its unique closure system and versatile styling options. An adjustable strap on the heel gives you a custom fit while the upper features handwritten-esque \"N.354\" branding and visible stitching details."
+  },
+  {
+    "id": 6,
+    "brand": "Nike",
+    "name": "Kobe IV Protro",
+    "colorway": "Black/Del Sol",
+    "price": 18000,
+    "image": "https://bit.ly/2YaOHIg",
+    "description": "Seizing the moment, Kobe channeled his inner mamba mentality to lead his team to a championship in 2009. That year, he was wearing the Zoom Kobe IV, a revolutionary design that paved the way for low-cut footwear on the hardwood. Adding to Kobe’s performance-driven \"Protro\" series, the Kobe IV returns with improvements to enhance comfort and outfitted in the ‘Black/Del-Sol-Varsity Purple’ colorway we first saw in 2009."
+  },
+  {
+    "id": 7,
+    "brand": "Nike",
+    "name": "Adapt BB",
+    "colorway": "Wolf Grey",
+    "price": 35000,
+    "image": "https://bit.ly/2KDHfSS",
+    "description": "Designed to give you a customized, consistent fit, the Nike Adapt BB is our first power lacing shoe that's built for basketball. Now in a color scheme that first inspired a future vision of footwear, it adapts to your foot to provide a locked-in feel for distraction-free play. Pair it with the Nike adapt app to fine-tune the fit and customize the features from your smartphone."
+  },
+  {
+    "id": 8,
+    "brand": "Nike",
+    "name": "Air Tech Challenge II",
+    "colorway": "Hot Lava",
+    "price": 13000,
+    "image": "https://bit.ly/2ZMbjyW",
+    "description": "The Air Tech Challenge II made its debut in 1990 and returns to its roots over two decades later in the original \"Hot Lava\" colorway. Arriving in legendary form, the tennis silhouette was designed to meet the high demands of tournament play through superior durability, flexibility, cushioning and traction."
+  },
+  {
+    "id": 9,
+    "brand": "Nike",
+    "name": "Air Jordan XI Low",
+    "colorway": "Light Bone",
+    "price": 18500,
+    "image": "https://bit.ly/2N7Wgye",
+    "description": "Following the Air Jordan XI Navy release, this latest colorway continues to celebrate the 23-year anniversary of the silhouette MJ won his fourth title with. The Air Jordan XI Low \"Light Bone\" arrives with a python-inspired snakeskin pattern that sits on top of a sail translucent outsole—the red accents throughout pay homage to the heritage of Jordan Brand."
+  },
+  {
+    "id": 10,
+    "brand": "Nike",
+    "name": "Kobe IV Protro",
+    "colorway": "White/Del Sol",
+    "price": 18000,
+    "image": "https://bit.ly/2FqaRPp",
+    "description": "A champion once again, Kobe and his teammates victoriously paraded through the streets of LA in 2009 to celebrate their championship success. In the parade, Kobe wore the shoes that helped him win his fourth ring and paved the way for low-cut footwear on the hardwood with a revolutionary design – the Zoom Kobe IV. Adding to Kobe’s performance-driven \"Protro\" series, the Kobe IV returns with improvements to enhance comfort and outfitted in the 'White/Del-Sol' colorway we first saw in 2009."
+  },
+  {
+    "id": 11,
+    "brand": "Nike",
+    "name": "Lebron 16",
+    "colorway": "Hot White Lava",
+    "price": 20000,
+    "image": "https://bit.ly/2XwAacG",
+    "description": "Embodying LeBron’s defiant mentality, his latest silhouette draws inspiration from the rebellious spirit of one of Nike's boldest silhouettes. With the iconic splatter pattern hits at the heel, top label on the tongue and perforated leather along the upper, the LeBron 16 'Hot Lava White' presents a modernized take on the classic shoe."
+  },
+  {
+    "id": 12,
+    "brand": "Nike",
+    "name": "Classic Cortez SE",
+    "colorway": "OG",
+    "price": 7500,
+    "image": "https://bit.ly/31UpeF1",
+    "description": "nspired by the first Nike running shoe ever, the Classic Cortez SE improves on the original with a durable leather upper, a low-cut fit around the ankle, and plush cushioning. The newest release delivers a throwback colorway that’s pure Americana."
+  }
+]

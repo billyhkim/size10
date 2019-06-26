@@ -1,0 +1,20 @@
+[
+  {
+    "id": 7,
+    "brand": "Nike",
+    "name": "Adapt BB",
+    "colorway": "Wolf Grey",
+    "price": 35000,
+    "image": "https://bit.ly/2KDHfSS",
+    "description": "Designed to give you a customized, consistent fit, the Nike Adapt BB is our first power lacing shoe that's built for basketball. Now in a color scheme that first inspired a future vision of footwear, it adapts to your foot to provide a locked-in feel for distraction-free play. Pair it with the Nike adapt app to fine-tune the fit and customize the features from your smartphone."
+  },
+  {
+    "id": 10,
+    "brand": "Nike",
+    "name": "Kobe IV Protro",
+    "colorway": "White/Del Sol",
+    "price": 18000,
+    "image": "https://bit.ly/2FqaRPp",
+    "description": "A champion once again, Kobe and his teammates victoriously paraded through the streets of LA in 2009 to celebrate their championship success. In the parade, Kobe wore the shoes that helped him win his fourth ring and paved the way for low-cut footwear on the hardwood with a revolutionary design – the Zoom Kobe IV. Adding to Kobe’s performance-driven \"Protro\" series, the Kobe IV returns with improvements to enhance comfort and outfitted in the 'White/Del-Sol' colorway we first saw in 2009."
+  }
+]
