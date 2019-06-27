@@ -1,16 +1,5 @@
 import React from 'react';
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem } from 'reactstrap';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 export default class Header extends React.Component {
   constructor(props) {
@@ -19,6 +8,16 @@ export default class Header extends React.Component {
     this.state = {
       isOpen: false
     };
+    this.handleLandingView = this.handleLandingView.bind(this);
+    this.handleCatalogView = this.handleCatalogView.bind(this);
+  }
+  handleLandingView(e) {
+    e.preventDefault();
+    this.props.setView('landing', {});
+  }
+  handleCatalogView(e) {
+    e.preventDefault();
+    this.props.setView('catalog', {});
   }
   toggle() {
     this.setState({
@@ -34,12 +33,16 @@ export default class Header extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
+                <NavLink><i className="fas fa-home" onClick={this.handleLandingView}></i></NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink><i className="fas fa-shoe-prints" onClick={this.handleCatalogView}></i></NavLink>
+              </NavItem>
+              <NavItem>
                 <NavLink href="https://github.com/billyhkim/size10" target="_blank">GitHub</NavLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  Options
-                </DropdownToggle>
+                <DropdownToggle nav caret>More</DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>Option 1</DropdownItem>
                   <DropdownItem>Option 2</DropdownItem>
