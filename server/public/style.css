@@ -5,3 +5,21 @@
   font-family: 'Oswald', sans-serif;
   font-weight: 400;
 }
+.description-font {
+  font-family: 'Arial', sans-serif;
+}
+.landing-background {
+  position: relative;
+  z-index: 1;
+}
+.landing-background::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background-image: url("./api/media/landing.jpg");
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: .8;
+}
