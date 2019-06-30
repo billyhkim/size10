@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Col, Row, Button } from 'reactstrap';
+import { Container, Col, Row } from 'reactstrap';
 
 export default class Landing extends React.Component {
   constructor(props) {
@@ -23,10 +23,8 @@ export default class Landing extends React.Component {
           <Row>
             <Col sm="5" className="h4 card-font text-white">Roger Vivier</Col>
           </Row>
-          <Row className="mt-3">
-            <Button color="danger" className="ml-3" onClick={this.handleCatalogView}>SHOES</Button>
-            <Button color="danger" className="ml-2">ABOUT</Button>
-          </Row>
+          <button type="button" className="col-sm-5 btn btn-lg btn-danger btn-block description-font mt-4" onClick={this.handleCatalogView}><i className="fas fa-shoe-prints fa-lg pointer-hover"></i>SHOES</button>
+          <button type="button" className="col-sm-5 btn btn-lg btn-danger btn-block description-font">ABOUT</button>
         </Container>
       </div>
     );

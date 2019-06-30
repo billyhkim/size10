@@ -3,6 +3,7 @@ import Header from './header';
 import Landing from './landing';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
+import CartSummary from './cart-summary';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -14,6 +15,8 @@ export default class App extends React.Component {
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
+    this.changeQuantityFromCart = this.changeQuantityFromCart.bind(this);
+    this.removeFromCart = this.removeFromCart.bind(this);
   }
   componentDidMount() {
     this.getProducts();
@@ -33,12 +36,6 @@ export default class App extends React.Component {
       .then(newRes => this.setState({ products: newRes }))
       .catch(err => console.error('Product retrieval failed. Please try again: ', err));
   }
-  getCartItems() {
-    fetch('/api/cart.php', { method: 'GET' })
-      .then(res => res.json())
-      .then(newRes => this.setState({ cart: newRes }))
-      .catch(err => console.error('Cart retrieval failed. Please try again: ', err));
-  }
   addToCart(productAsObject, productQuantity) {
     let cartSnapshot = JSON.parse(localStorage.getItem('cart'));
     let checkIfProductAdded = cartSnapshot.findIndex(itemIndex => {
@@ -53,6 +50,24 @@ export default class App extends React.Component {
       productAsObject.quantity = productAsObject.quantity + productQuantity;
       cartSnapshot.push(productAsObject);
     }
+    this.setState({ cart: cartSnapshot });
+    localStorage.cart = JSON.stringify(cartSnapshot);
+  }
+  changeQuantityFromCart(productId, change) {
+    let cartSnapshot = JSON.parse(localStorage.getItem('cart'));
+    let indexToChange = cartSnapshot.findIndex(item => {
+      return item.id === productId;
+    });
+    change === 'increment' ? cartSnapshot[indexToChange].quantity++ : cartSnapshot[indexToChange].quantity--;
+    this.setState({ cart: cartSnapshot });
+    localStorage.cart = JSON.stringify(cartSnapshot);
+  }
+  removeFromCart(productId) {
+    let cartSnapshot = JSON.parse(localStorage.getItem('cart'));
+    let indexToRemove = cartSnapshot.findIndex(item => {
+      return item.id === productId;
+    });
+    cartSnapshot.splice(indexToRemove, 1);
     this.setState({ cart: cartSnapshot });
     localStorage.cart = JSON.stringify(cartSnapshot);
   }
@@ -82,8 +97,10 @@ export default class App extends React.Component {
         );
       case 'cart':
         return (
-          <div>
-          </div>
+          <React.Fragment>
+            <Header setView={this.setView} cart={this.state.cart}/>
+            <CartSummary setView={this.setView} cart={this.state.cart} change={this.changeQuantityFromCart} removeFromCart={this.removeFromCart}/>
+          </React.Fragment>
         );
       case 'checkout':
         return (

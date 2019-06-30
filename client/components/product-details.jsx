@@ -1,14 +1,22 @@
 import React from 'react';
-import { CardImg, Button, Col, Row, Container } from 'reactstrap';
+import { CardImg, Button, Col, Row, Container, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 export default class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { product: this.props.item, quantity: 1 };
+    this.state = { product: this.props.item, quantity: 1, modal: false };
     this.handleBackClick = this.handleBackClick.bind(this);
     this.handleAddClick = this.handleAddClick.bind(this);
+    this.handleContinueClick = this.handleContinueClick.bind(this);
+    this.handleCartClick = this.handleCartClick.bind(this);
     this.decrementQuantity = this.decrementQuantity.bind(this);
     this.incrementQuantity = this.incrementQuantity.bind(this);
+    this.toggle = this.toggle.bind(this);
+  }
+  toggle() {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
   }
   handleBackClick(e) {
     e.preventDefault();
@@ -16,7 +24,18 @@ export default class ProductDetails extends React.Component {
   }
   handleAddClick(e) {
     e.preventDefault();
+    this.toggle();
     this.props.addToCart(this.state.product, this.state.quantity);
+  }
+  handleContinueClick(e) {
+    e.preventDefault();
+    this.toggle();
+    this.props.setView('catalog', {});
+  }
+  handleCartClick(e) {
+    e.preventDefault();
+    this.toggle();
+    this.props.setView('cart', {});
   }
   decrementQuantity(e) {
     e.preventDefault();
@@ -32,32 +51,52 @@ export default class ProductDetails extends React.Component {
   render() {
     if (this.state.product) {
       return (
-        <Container className="mt-2 mb-4">
-          <Row>
-            <Col sm="7">
-              <CardImg width="100%" src={this.state.product.image} alt={this.state.product.name} />
-            </Col>
-            <Col sm="5" className="m-auto">
-              <div className="card-font text-center">
-                <div className="h4 text-muted mb-3">{this.state.product.brand} {this.state.product.name}</div>
-                <div className="h2 mb-3">{(this.state.product.colorway).toUpperCase()}</div>
-                <div className="h4 text-muted mb-3">{'$' + (this.state.product.price / 100).toFixed(2)}</div>
-                <div className="h4 text-primary mb-4">IN STOCK</div>
-                <div className="h5 mb-2">Quantity:</div>
-                <div className="h4 mb-4"><i className="fas fa-minus-square pointer-hover ml-3 mr-4" onClick={this.decrementQuantity}></i>{this.state.quantity}<i className="fas fa-plus-square pointer-hover ml-4 mr-3" onClick={this.incrementQuantity}></i></div>
-                <Button onClick={this.handleAddClick}>ADD TO CART</Button>
+        <React.Fragment>
+          <Container className="mt-2 mb-4">
+            <Row>
+              <Col sm="7">
+                <CardImg width="100%" src={this.state.product.image} alt={this.state.product.name} />
+              </Col>
+              <Col sm="5" className="m-auto">
+                <div className="card-font text-center">
+                  <div className="h4 text-muted mb-3">{this.state.product.name}</div>
+                  <div className="h2 mb-3">{(this.state.product.colorway).toUpperCase()}</div>
+                  <div className="h4 text-muted mb-3">{'$' + (this.state.product.price / 100).toFixed(2)}</div>
+                  <div className="h4 text-primary mb-4">IN STOCK</div>
+                  <div className="h5 mb-2">Quantity:</div>
+                  <div className="h4 mb-4"><i className="fas fa-minus-square pointer-hover ml-3 mr-4" onClick={this.decrementQuantity}></i>{this.state.quantity}<i className="fas fa-plus-square pointer-hover ml-4 mr-3" onClick={this.incrementQuantity}></i></div>
+                  <Button onClick={this.handleAddClick}>ADD TO CART</Button>
+                </div>
+              </Col>
+            </Row>
+            <hr/>
+            <div className="h6 description-font text-muted">Product Description</div>
+            <hr/>
+            <div className="h5 description-font">{this.state.product.description}</div>
+            <hr/>
+            <Row>
+              <Button className="text-center m-auto" onClick={this.handleBackClick}><i className="fas fa-arrow-alt-circle-left pointer-hover"></i></Button>
+            </Row>
+          </Container>
+          <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+            <ModalHeader className="card-font" toggle={this.toggle}><i className="fas fa-check-circle text-success"></i> ADDED TO CART</ModalHeader>
+            <ModalBody>
+              <div className="row align-items-center mt-1 mb-1">
+                <img src={this.state.product.image} alt="" className="col-sm-5 mx-auto"/>
+                <div className="col-sm-7 card-font">
+                  <div className="h5">{this.state.product.name}</div>
+                  <div className="h5 text-muted">{this.state.product.colorway}</div>
+                  <div className="h6 description-font text-muted">${(this.state.product.price / 100).toFixed(2)} x {this.state.product.quantity} = ${((this.state.product.price / 100) * this.state.product.quantity).toFixed(2)}</div>
+                  <div className="h5 mb-3">Quantity: {this.state.product.quantity}</div>
+                </div>
               </div>
-            </Col>
-          </Row>
-          <hr/>
-          <div className="h6 description-font text-muted">Product Description</div>
-          <hr/>
-          <div className="h5 description-font">{this.state.product.description}</div>
-          <hr/>
-          <Row>
-            <Button className="text-center m-auto" onClick={this.handleBackClick}><i className="fas fa-arrow-alt-circle-left pointer-hover"></i></Button>
-          </Row>
-        </Container>
+            </ModalBody>
+            <ModalFooter>
+              <Button color="success" onClick={this.handleContinueClick}>CONTINUE SHOPPING</Button>{' '}
+              <Button color="secondary" onClick={this.handleCartClick}>GO TO CART</Button>
+            </ModalFooter>
+          </Modal>
+        </React.Fragment>
       );
     } else {
       return null;
