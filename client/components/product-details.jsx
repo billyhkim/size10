@@ -7,6 +7,8 @@ export default class ProductDetails extends React.Component {
     this.state = { product: this.props.item, quantity: 1 };
     this.handleBackClick = this.handleBackClick.bind(this);
     this.handleAddClick = this.handleAddClick.bind(this);
+    this.decrementQuantity = this.decrementQuantity.bind(this);
+    this.incrementQuantity = this.incrementQuantity.bind(this);
   }
   handleBackClick(e) {
     e.preventDefault();
@@ -14,7 +16,18 @@ export default class ProductDetails extends React.Component {
   }
   handleAddClick(e) {
     e.preventDefault();
-    this.props.addToCart(this.state.product);
+    this.props.addToCart(this.state.product, this.state.quantity);
+  }
+  decrementQuantity(e) {
+    e.preventDefault();
+    if (this.state.quantity === 1) {
+      return;
+    }
+    this.setState({ quantity: this.state.quantity - 1 });
+  }
+  incrementQuantity(e) {
+    e.preventDefault();
+    this.setState({ quantity: this.state.quantity + 1 });
   }
   render() {
     if (this.state.product) {
@@ -25,11 +38,13 @@ export default class ProductDetails extends React.Component {
               <CardImg width="100%" src={this.state.product.image} alt={this.state.product.name} />
             </Col>
             <Col sm="5" className="m-auto">
-              <div className="card-font text-center mb-4">
-                <div className="h4 text-muted mb-4">{this.state.product.brand} {this.state.product.name}</div>
-                <div className="h2 mb-4">{(this.state.product.colorway).toUpperCase()}</div>
-                <div className="h4 text-muted mb-4">{'$' + (this.state.product.price / 100).toFixed(2)}</div>
+              <div className="card-font text-center">
+                <div className="h4 text-muted mb-3">{this.state.product.brand} {this.state.product.name}</div>
+                <div className="h2 mb-3">{(this.state.product.colorway).toUpperCase()}</div>
+                <div className="h4 text-muted mb-3">{'$' + (this.state.product.price / 100).toFixed(2)}</div>
                 <div className="h4 text-primary mb-4">IN STOCK</div>
+                <div className="h5 mb-2">Quantity:</div>
+                <div className="h4 mb-4"><i className="fas fa-minus-square pointer-hover ml-3 mr-4" onClick={this.decrementQuantity}></i>{this.state.quantity}<i className="fas fa-plus-square pointer-hover ml-4 mr-3" onClick={this.incrementQuantity}></i></div>
                 <Button onClick={this.handleAddClick}>ADD TO CART</Button>
               </div>
             </Col>
@@ -40,7 +55,7 @@ export default class ProductDetails extends React.Component {
           <div className="h5 description-font">{this.state.product.description}</div>
           <hr/>
           <Row>
-            <Button className="text-center m-auto" onClick={this.handleBackClick}>Back to Catalog</Button>
+            <Button className="text-center m-auto" onClick={this.handleBackClick}><i className="fas fa-arrow-alt-circle-left pointer-hover"></i></Button>
           </Row>
         </Container>
       );
