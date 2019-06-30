@@ -10,6 +10,7 @@ export default class Header extends React.Component {
     };
     this.handleLandingView = this.handleLandingView.bind(this);
     this.handleCatalogView = this.handleCatalogView.bind(this);
+    this.handleCartView = this.handleCartView.bind(this);
   }
   handleLandingView(e) {
     e.preventDefault();
@@ -41,13 +42,13 @@ export default class Header extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink><i className="fas fa-home pointer-hover" onClick={this.handleLandingView}></i></NavLink>
+                <NavLink><i className="fas fa-home fa-lg pointer-hover" onClick={this.handleLandingView}></i></NavLink>
               </NavItem>
               <NavItem>
-                <NavLink><i className="fas fa-shoe-prints pointer-hover" onClick={this.handleCatalogView}></i></NavLink>
+                <NavLink><i className="fas fa-shoe-prints fa-lg pointer-hover" onClick={this.handleCatalogView}></i></NavLink>
               </NavItem>
               <NavItem>
-                <NavLink className="pointer-hover">Cart Items: {orderQuantities}</NavLink>
+                <NavLink className="pointer-hover" onClick={this.handleCartView}><i className="fas fa-shopping-cart fa-lg d-inline-block"></i><div className="cart-quantity d-inline-block pl-1 pr-1">{orderQuantities}</div></NavLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>More</DropdownToggle>

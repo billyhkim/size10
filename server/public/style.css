@@ -34,6 +34,13 @@
 .pointer-hover {
   cursor: pointer;
 }
+.cart-quantity {
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  background-color: orangered;
+  border-radius: 10%;
+}
 
 /* ----------- iPhone 6, 6S, 7 and 8 ----------- */
 
@@ -44,7 +51,7 @@
   and (-webkit-min-device-pixel-ratio: 2)
   and (orientation: landscape) { 
     .landing-background::before {
-      height: 130vh;
+      height: 150vh;
     }
     .landing-quote {
       padding-bottom: 5%;
@@ -63,7 +70,7 @@
   and (-webkit-min-device-pixel-ratio: 3)
   and (orientation: landscape) { 
     .landing-background::before {
-      height: 130vh;
+      height: 140vh;
     }
     .landing-quote {
       padding-bottom: 5%;
@@ -82,7 +89,7 @@
   and (-webkit-min-device-pixel-ratio: 3)
   and (orientation: landscape) { 
     .landing-background::before {
-      height: 110vh;
+      height: 140vh;
     }
     .landing-quote {
       padding-bottom: 5%;
