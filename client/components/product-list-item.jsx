@@ -13,7 +13,7 @@ export default class ProductListItem extends React.Component {
   render() {
     return (
       <Col sm="4" className="mt-2 mb-2 d-flex align-items-stretch">
-        <Card className="card-font text-center">
+        <Card className="card-font text-center shadow-sm">
           <CardImg top width="100%" src={this.props.item.image} alt={this.props.item.name} />
           <CardBody>
             <CardSubtitle className="h6 text-muted mb-1">{this.props.item.brand} {this.props.item.name}</CardSubtitle>

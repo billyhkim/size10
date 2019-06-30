@@ -15,16 +15,16 @@
     "colorway": "Houston",
     "price": 17500,
     "image": "https://bit.ly/2X3Rdia",
-    "description": "Introduced in 2005, the Zoom LeBron III equipped a young LeBron James with everything he needed to jumpstart his now storied basketball career. The performance-driven basketball silhouette would transcend its original purpose to become a fan-favorite LeBron silhouette. Continuing the model's retro return, the Zoom LeBron III now arrives in the once player exclusive “Houston” colorway."
+    "description": "Introduced in 2005, the Zoom LeBron III equipped a young LeBron James with everything he needed to jumpstart his now storied basketball career. The performance-driven basketball silhouette would transcend its original purpose to become a fan-favorite LeBron silhouette. Continuing the model's retro return, the Zoom LeBron III now arrives in the once player exclusive \"Houston\" colorway."
   },
   {
     "id": 3,
-    "brand": "Nike",
+    "brand": "Jordan",
     "name": "Air Jordan I",
     "colorway": "Sail/Gym Red",
     "price": 16000,
     "image": "https://bit.ly/2LbQrNA",
-    "description": "Until the Air Jordan I, game shoes in the league were mostly white due to the strict rules at the time. To differentiate itself from any other shoe, the Air Jordan I was released in multiple colors that led to a $5000 dollar fine per game and helped lay the foundation for what sneaker culture would become. Paying homage to Jordan Brand and MJ’s heritage, this Air Jordan I features black, white, Sail and Gym Red for a new twist on familiar color blocking."
+    "description": "Until the Air Jordan I, game shoes in the league were mostly white due to the strict rules at the time. To differentiate itself from any other shoe, the Air Jordan I was released in multiple colors that led to a $5000 dollar fine per game and helped lay the foundation for what sneaker culture would become. Paying homage to Jordan Brand and MJ's heritage, this Air Jordan I features black, white, Sail and Gym Red for a new twist on familiar color blocking."
   },
   {
     "id": 4,
@@ -51,7 +51,7 @@
     "colorway": "Black/Del Sol",
     "price": 18000,
     "image": "https://bit.ly/2YaOHIg",
-    "description": "Seizing the moment, Kobe channeled his inner mamba mentality to lead his team to a championship in 2009. That year, he was wearing the Zoom Kobe IV, a revolutionary design that paved the way for low-cut footwear on the hardwood. Adding to Kobe’s performance-driven \"Protro\" series, the Kobe IV returns with improvements to enhance comfort and outfitted in the ‘Black/Del-Sol-Varsity Purple’ colorway we first saw in 2009."
+    "description": "Seizing the moment, Kobe channeled his inner mamba mentality to lead his team to a championship in 2009. That year, he was wearing the Zoom Kobe IV, a revolutionary design that paved the way for low-cut footwear on the hardwood. Adding to Kobe's performance-driven \"Protro\" series, the Kobe IV returns with improvements to enhance comfort and outfitted in the 'Black/Del-Sol-Varsity Purple' colorway we first saw in 2009."
   },
   {
     "id": 7,
@@ -73,12 +73,12 @@
   },
   {
     "id": 9,
-    "brand": "Nike",
+    "brand": "Jordan",
     "name": "Air Jordan XI Low",
     "colorway": "Light Bone",
     "price": 18500,
     "image": "https://bit.ly/2N7Wgye",
-    "description": "Following the Air Jordan XI Navy release, this latest colorway continues to celebrate the 23-year anniversary of the silhouette MJ won his fourth title with. The Air Jordan XI Low \"Light Bone\" arrives with a python-inspired snakeskin pattern that sits on top of a sail translucent outsole—the red accents throughout pay homage to the heritage of Jordan Brand."
+    "description": "Following the Air Jordan XI Navy release, this latest colorway continues to celebrate the 23-year anniversary of the silhouette MJ won his fourth title with. The Air Jordan XI Low \"Light Bone\" arrives with a python-inspired snakeskin pattern that sits on top of a sail translucent outsole - the red accents throughout pay homage to the heritage of Jordan Brand."
   },
   {
     "id": 10,
@@ -87,7 +87,7 @@
     "colorway": "White/Del Sol",
     "price": 18000,
     "image": "https://bit.ly/2FqaRPp",
-    "description": "A champion once again, Kobe and his teammates victoriously paraded through the streets of LA in 2009 to celebrate their championship success. In the parade, Kobe wore the shoes that helped him win his fourth ring and paved the way for low-cut footwear on the hardwood with a revolutionary design – the Zoom Kobe IV. Adding to Kobe’s performance-driven \"Protro\" series, the Kobe IV returns with improvements to enhance comfort and outfitted in the 'White/Del-Sol' colorway we first saw in 2009."
+    "description": "A champion once again, Kobe and his teammates victoriously paraded through the streets of LA in 2009 to celebrate their championship success. In the parade, Kobe wore the shoes that helped him win his fourth ring and paved the way for low-cut footwear on the hardwood with a revolutionary design - the Zoom Kobe IV. Adding to Kobe's performance-driven \"Protro\" series, the Kobe IV returns with improvements to enhance comfort and outfitted in the 'White/Del-Sol' colorway we first saw in 2009."
   },
   {
     "id": 11,
@@ -96,7 +96,7 @@
     "colorway": "Hot White Lava",
     "price": 20000,
     "image": "https://bit.ly/2XwAacG",
-    "description": "Embodying LeBron’s defiant mentality, his latest silhouette draws inspiration from the rebellious spirit of one of Nike's boldest silhouettes. With the iconic splatter pattern hits at the heel, top label on the tongue and perforated leather along the upper, the LeBron 16 'Hot Lava White' presents a modernized take on the classic shoe."
+    "description": "Embodying LeBron's defiant mentality, his latest silhouette draws inspiration from the rebellious spirit of one of Nike's boldest silhouettes. With the iconic splatter pattern hits at the heel, top label on the tongue and perforated leather along the upper, the LeBron 16 'Hot Lava White' presents a modernized take on the classic shoe."
   },
   {
     "id": 12,
@@ -105,6 +105,6 @@
     "colorway": "OG",
     "price": 7500,
     "image": "https://bit.ly/31UpeF1",
-    "description": "nspired by the first Nike running shoe ever, the Classic Cortez SE improves on the original with a durable leather upper, a low-cut fit around the ankle, and plush cushioning. The newest release delivers a throwback colorway that’s pure Americana."
+    "description": "Inspired by the first Nike running shoe ever, the Classic Cortez SE improves on the original with a durable leather upper, a low-cut fit around the ankle, and plush cushioning. The newest release delivers a throwback colorway that's pure Americana."
   }
 ]

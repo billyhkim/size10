@@ -1,12 +1,12 @@
 .header-font {
-  font-family: 'Rubik Mono One', sans-serif;
+  font-family: 'Rubik Mono One', 'Helvetica Neue', 'Helvetica', sans-serif;
 }
 .card-font {
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Oswald', 'Helvetica Neue', 'Helvetica', sans-serif;
   font-weight: 400;
 }
 .description-font {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
 }
 .landing-background {
   position: relative;
@@ -16,10 +16,75 @@
   content: "";
   position: absolute;
   z-index: -1;
-  background-image: url("./api/media/landing.jpg");
+  background-image: url("./media/landing.jpg");
   height: 100vh;
   width: 100vw;
   background-size: cover;
   background-repeat: no-repeat;
   opacity: .8;
+}
+.landing-quote {
+  background-color: gainsboro;
+  opacity: .85;
+  padding-bottom: 2%;
+  border-radius: 1%;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+/* ----------- iPhone 6, 6S, 7 and 8 ----------- */
+
+/* Landscape */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) { 
+    .landing-background::before {
+      height: 130vh;
+    }
+    .landing-quote {
+      padding-bottom: 5%;
+      border-radius: 1%;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+}
+
+/* ----------- iPhone 6+, 7+ and 8+ ----------- */
+
+/* Landscape */
+@media only screen 
+  and (min-device-width: 414px) 
+  and (max-device-width: 736px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: landscape) { 
+    .landing-background::before {
+      height: 130vh;
+    }
+    .landing-quote {
+      padding-bottom: 5%;
+      border-radius: 1%;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+}
+
+/* ----------- iPhone X ----------- */
+
+/* Landscape */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: landscape) { 
+    .landing-background::before {
+      height: 110vh;
+    }
+    .landing-quote {
+      padding-bottom: 5%;
+      border-radius: 1%;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
 }
