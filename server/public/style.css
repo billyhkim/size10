@@ -31,6 +31,9 @@
   margin-left: 5px;
   margin-right: 5px;
 }
+.pointer-hover {
+  cursor: pointer;
+}
 
 /* ----------- iPhone 6, 6S, 7 and 8 ----------- */
 
