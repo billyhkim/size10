@@ -23,8 +23,8 @@ export default class Landing extends React.Component {
           <Row>
             <Col sm="5" className="h4 card-font text-white">Roger Vivier</Col>
           </Row>
-          <button type="button" className="col-sm-5 btn btn-lg btn-danger btn-block description-font mt-4" onClick={this.handleCatalogView}><i className="fas fa-shoe-prints fa-lg pointer-hover"></i>SHOES</button>
-          <button type="button" className="col-sm-5 btn btn-lg btn-danger btn-block description-font">ABOUT</button>
+          <button type="button" className="col-sm-3 btn btn-lg btn-danger btn-block card-font mt-4" onClick={this.handleCatalogView}><i className="fas fa-shoe-prints fa-lg pointer-hover"></i>SHOES</button>
+          <button type="button" className="col-sm-3 btn btn-lg btn-danger btn-block card-font">ABOUT</button>
         </Container>
       </div>
     );

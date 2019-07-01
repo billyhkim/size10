@@ -39,6 +39,7 @@ export default class CartSummaryItem extends React.Component {
   removeFromModal(e) {
     e.preventDefault();
     this.props.removeFromCart(this.props.cartItem.id);
+    this.toggle();
   }
   render() {
     return (
@@ -73,8 +74,8 @@ export default class CartSummaryItem extends React.Component {
             </div>
           </ModalBody>
           <ModalFooter>
-            <Button color="danger" onClick={this.removeFromModal}>REMOVE FROM CART</Button>{' '}
             <Button color="secondary" onClick={this.toggle}>KEEP IN CART</Button>
+            <Button color="danger" onClick={this.removeFromModal}>REMOVE FROM CART</Button>{' '}
           </ModalFooter>
         </Modal>
       </React.Fragment>
