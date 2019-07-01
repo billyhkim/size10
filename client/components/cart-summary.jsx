@@ -18,7 +18,7 @@ export default class CartSummary extends React.Component {
   }
   render() {
     const cartItems = this.props.cart.map((cartItem, index) => <CartSummaryItem key={index} cartItem={cartItem} change={this.props.change} removeFromCart={this.props.removeFromCart} setView={this.props.setView}/>);
-    const emptyCartCheck = !this.props.cart.length ? <div className="h3 description-font mb-5"><hr/>There are no items in your cart.</div> : cartItems;
+    const emptyCartCheck = !this.props.cart.length ? <div className="h3 card-font mb-5"><hr/>There are no items in your cart.</div> : cartItems;
     const emptySummaryCheck = !this.props.cart.length ? 0.00 : 10.00;
     const noCheckoutBtnIfNoCartItems = !this.props.cart.length ? null : <button type="button" className="btn btn-lg btn-warning btn-block card-font" onClick={this.handleCheckout}>CHECKOUT</button>;
     let orderQuantities = this.props.cart.reduce((total, product) => {

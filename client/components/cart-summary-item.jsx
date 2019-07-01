@@ -52,7 +52,7 @@ export default class CartSummaryItem extends React.Component {
               <div className="h4 card-font">{this.props.cartItem.name}</div>
               <div className="h5 card-font text-muted">{this.props.cartItem.colorway}</div>
               <div className="h5 description-font text-muted">${(this.props.cartItem.price / 100).toFixed(2)}</div>
-              <div className="h5 mb-3">Quantity: <i className="fas fa-minus-square pointer-hover mr-2" onClick={this.decrementQuantity}></i>{this.props.cartItem.quantity}<i className="fas fa-plus-square pointer-hover ml-2" onClick={this.incrementQuantity}></i></div>
+              <div className="h5 mb-3 noselect">Quantity: <i className="fas fa-minus-square pointer-hover mr-2" onClick={this.decrementQuantity}></i>{this.props.cartItem.quantity}<i className="fas fa-plus-square pointer-hover ml-2" onClick={this.incrementQuantity}></i></div>
               <div>
                 <a href="#" className="alert-link description-font mr-3" onClick={this.handleDetailClick}>Details</a>
                 <a href="#" className="alert-link description-font" onClick={this.handleRemove}>Remove</a>
@@ -74,8 +74,8 @@ export default class CartSummaryItem extends React.Component {
             </div>
           </ModalBody>
           <ModalFooter>
-            <Button color="secondary" onClick={this.toggle}>KEEP IN CART</Button>
-            <Button color="danger" onClick={this.removeFromModal}>REMOVE FROM CART</Button>{' '}
+            <Button className="card-font" color="secondary" onClick={this.toggle}>KEEP IN CART</Button>
+            <Button className="card-font" color="danger" onClick={this.removeFromModal}>REMOVE FROM CART</Button>{' '}
           </ModalFooter>
         </Modal>
       </React.Fragment>

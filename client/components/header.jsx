@@ -11,6 +11,7 @@ export default class Header extends React.Component {
     this.handleLandingView = this.handleLandingView.bind(this);
     this.handleCatalogView = this.handleCatalogView.bind(this);
     this.handleCartView = this.handleCartView.bind(this);
+    this.handleAboutView = this.handleAboutView.bind(this);
   }
   handleLandingView(e) {
     e.preventDefault();
@@ -23,6 +24,10 @@ export default class Header extends React.Component {
   handleCartView(e) {
     e.preventDefault();
     this.props.setView('cart', {});
+  }
+  handleAboutView(e) {
+    e.preventDefault();
+    this.props.setView('about', {});
   }
   toggle() {
     this.setState({
@@ -37,7 +42,7 @@ export default class Header extends React.Component {
     return (
       <div>
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/" className="header-font">size10</NavbarBrand>
+          <NavbarBrand href="/" className="header-font noselect">size10</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
@@ -51,11 +56,11 @@ export default class Header extends React.Component {
                 <NavLink className="pointer-hover" onClick={this.handleCartView}><i className="fas fa-shopping-cart fa-lg d-inline-block"></i><div className="cart-quantity d-inline-block pl-1 pr-1">{orderQuantities}</div></NavLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>More</DropdownToggle>
+                <DropdownToggle nav caret className="noselect">More</DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem href="https://github.com/billyhkim/size10" target="_blank">GitHub</DropdownItem>
                   <DropdownItem divider />
-                  <DropdownItem>About</DropdownItem>
+                  <DropdownItem onClick={this.handleAboutView}>About</DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
             </Nav>

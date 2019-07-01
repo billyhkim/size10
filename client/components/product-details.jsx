@@ -4,7 +4,11 @@ import { CardImg, Button, Col, Row, Container, Modal, ModalHeader, ModalBody, Mo
 export default class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { product: this.props.item, quantity: 1, modal: false };
+    this.state = {
+      product: this.props.item,
+      quantity: 1,
+      modal: false
+    };
     this.handleBackClick = this.handleBackClick.bind(this);
     this.handleAddClick = this.handleAddClick.bind(this);
     this.handleContinueClick = this.handleContinueClick.bind(this);
@@ -17,6 +21,9 @@ export default class ProductDetails extends React.Component {
     this.setState(prevState => ({
       modal: !prevState.modal
     }));
+  }
+  componentDidMount() {
+    this.setState({ quantity: 1 });
   }
   handleBackClick(e) {
     e.preventDefault();
@@ -64,7 +71,7 @@ export default class ProductDetails extends React.Component {
                   <div className="h4 text-muted mb-3">{'$' + (this.state.product.price / 100).toFixed(2)}</div>
                   <div className="h4 text-primary mb-4">IN STOCK</div>
                   <div className="h5 mb-2">Quantity:</div>
-                  <div className="h4 mb-4"><i className="fas fa-minus-square pointer-hover ml-3 mr-4" onClick={this.decrementQuantity}></i>{this.state.quantity}<i className="fas fa-plus-square pointer-hover ml-4 mr-3" onClick={this.incrementQuantity}></i></div>
+                  <div className="h4 mb-4 noselect"><i className="fas fa-minus-square pointer-hover ml-3 mr-4" onClick={this.decrementQuantity}></i>{this.state.quantity}<i className="fas fa-plus-square pointer-hover ml-4 mr-3" onClick={this.incrementQuantity}></i></div>
                   <Button onClick={this.handleAddClick}>ADD TO CART</Button>
                 </div>
               </Col>
