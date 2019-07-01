@@ -4,6 +4,7 @@ import Landing from './landing';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
+import CheckoutForm from './checkout-form';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -11,12 +12,14 @@ export default class App extends React.Component {
     this.state = {
       products: [],
       view: { name: 'landing', params: {} },
-      cart: []
+      cart: [],
+      confirmationNumber: null
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.changeQuantityFromCart = this.changeQuantityFromCart.bind(this);
     this.removeFromCart = this.removeFromCart.bind(this);
+    this.placeOrder = this.placeOrder.bind(this);
   }
   componentDidMount() {
     this.getProducts();
@@ -71,6 +74,29 @@ export default class App extends React.Component {
     this.setState({ cart: cartSnapshot });
     localStorage.cart = JSON.stringify(cartSnapshot);
   }
+  placeOrder(name, address, email, phone, creditCard) {
+    localStorage.clear();
+    let orderDetails = {
+      name,
+      address,
+      email,
+      phone,
+      creditCard,
+      cart: JSON.stringify(this.state.cart)
+    };
+    fetch('/api/orders.php', {
+      method: 'POST',
+      body: JSON.stringify(orderDetails),
+      headers: { 'Content-Type': 'application/json' }
+    })
+      .then(res => res.json())
+      .then(res => {
+        let confirmationNumber = res.confirmationNumber;
+        localStorage.cart = JSON.stringify([]);
+        this.setState({ cart: [], confirmationNumber });
+      })
+      .catch(err => console.error('Order failed. Please try again: ', err));
+  }
   render() {
     const nameState = this.state.view.name;
     switch (nameState) {
@@ -104,8 +130,17 @@ export default class App extends React.Component {
         );
       case 'checkout':
         return (
-          <div>
-          </div>
+          <React.Fragment>
+            <Header setView={this.setView} cart={this.state.cart}/>
+            <CheckoutForm setView={this.setView} cart={this.state.cart} placeOrder={this.placeOrder}/>
+          </React.Fragment>
+        );
+      case 'submit':
+        return (
+          <React.Fragment>
+            <Header setView={this.setView} cart={this.state.cart}/>
+            <CheckoutForm setView={this.setView} cart={this.state.cart}/>
+          </React.Fragment>
         );
     }
   }

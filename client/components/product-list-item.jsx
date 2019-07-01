@@ -19,7 +19,7 @@ export default class ProductListItem extends React.Component {
             <CardSubtitle className="h6 text-muted mb-1">{this.props.item.name}</CardSubtitle>
             <CardSubtitle className="h2 mb-1">{(this.props.item.colorway).toUpperCase()}</CardSubtitle>
             <CardSubtitle className="h5 text-muted mb-1">{'$' + (this.props.item.price / 100).toFixed(2)}</CardSubtitle>
-            <Button onClick={this.handleSetView}>MORE INFO</Button>
+            <Button className="btn-block" onClick={this.handleSetView}>MORE INFO</Button>
           </CardBody>
         </Card>
       </Col>
