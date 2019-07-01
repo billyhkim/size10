@@ -86,14 +86,14 @@ export default class ProductDetails extends React.Component {
                 <div className="col-sm-7 card-font">
                   <div className="h5">{this.state.product.name}</div>
                   <div className="h5 text-muted">{this.state.product.colorway}</div>
-                  <div className="h6 description-font text-muted">${(this.state.product.price / 100).toFixed(2)} x {this.state.product.quantity} = ${((this.state.product.price / 100) * this.state.product.quantity).toFixed(2)}</div>
-                  <div className="h5 mb-3">Quantity: {this.state.product.quantity}</div>
+                  <div className="h6 description-font text-muted">${(this.state.product.price / 100).toFixed(2)} x {this.state.quantity} = ${((this.state.product.price / 100) * this.state.quantity).toFixed(2)}</div>
+                  <div className="h5 mb-3">Quantity: {this.state.quantity}</div>
                 </div>
               </div>
             </ModalBody>
             <ModalFooter>
-              <Button color="success" onClick={this.handleContinueClick}>CONTINUE SHOPPING</Button>{' '}
-              <Button color="secondary" onClick={this.handleCartClick}>GO TO CART</Button>
+              <Button className="card-font" color="success" onClick={this.handleContinueClick}>CONTINUE SHOPPING</Button>{' '}
+              <Button className="card-font" color="secondary" onClick={this.handleCartClick}>GO TO CART</Button>
             </ModalFooter>
           </Modal>
         </React.Fragment>

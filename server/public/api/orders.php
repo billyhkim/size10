@@ -17,7 +17,7 @@ $address = addslashes($item['address']);
 $email = addslashes($item['email']);
 $phone = addslashes($item['phone']);
 $credit_card = $item['creditCard'];
-$order_items = $item['cart'];
+$order_items = addslashes($item['cart']);
 
 $query = "INSERT INTO `orders` (`name`, `address`, `email`, `phone`, `credit_card`, `order_items`) VALUES ('{$name}','{$address}', '{$email}', '{$phone}', '{$credit_card}', '{$order_items}')";
 
