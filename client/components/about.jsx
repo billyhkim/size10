@@ -19,7 +19,7 @@ export default class About extends React.Component {
               <div className="border border-secondary rounded p-2">
                 <div className="h1 card-font">Me.</div>
                 <hr/>
-                <img className="billy-image" src="/media/billy.png" alt="Billy picture"/>
+                <img className="billy-image" src="./media/billy.png" alt="Billy picture"/>
                 <hr/>
                 <div className="h5 description-font">Hi, my name&apos;s Billy, and thanks for stopping by size10.</div>
                 <div className="h5 description-font">Since I was a kid, I&apos;ve always loved the feeling of opening a new box of shoes. I would wait with so much anticipation for the new Penny&apos;s or Jordan&apos;s to drop. Because every time I would slip on a new pair, it was a reminder to stay down to earth, and dream of running further.</div>
