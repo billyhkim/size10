@@ -29,7 +29,7 @@ export default class About extends React.Component {
           </Row>
           <button type="button" className="btn btn-lg btn-warning btn-block card-font" onClick={this.handleCatalogView}><i className="fas fa-shoe-prints fa-lg pointer-hover"></i>CATALOG</button>
         </Container>
-        <img className="thankyou-image mt-2" src="/media/thankyou.jpg" alt="Thank you banner image"/>
+        <img className="thankyou-image mt-2" src="./media/thankyou.jpg" alt="Thank you banner image"/>
       </React.Fragment>
     );
   }

@@ -17,7 +17,7 @@ export default class ThankYou extends React.Component {
           <div className="h1 mt-3 mb-3">Hope you have a great one 🙌 🏀</div>
           <button type="button" className="btn btn-lg btn-warning btn-block card-font" onClick={this.handleHomeView}>BACK HOME</button>
         </Container>
-        <img className="thankyou-image" src="/media/thankyoubanner.jpg" alt="Thank you banner image"/>
+        <img className="thankyou-image" src="./media/thankyoubanner.jpg" alt="Thank you banner image"/>
       </React.Fragment>
     );
   }
