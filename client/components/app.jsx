@@ -5,15 +5,16 @@ import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
 import CheckoutForm from './checkout-form';
+import ThankYou from './thankyou';
+import About from './about';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       products: [],
-      view: { name: 'landing', params: {} },
-      cart: [],
-      confirmationNumber: null
+      view: { name: 'thankyou', params: {} },
+      cart: []
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
@@ -76,13 +77,18 @@ export default class App extends React.Component {
   }
   placeOrder(name, address, email, phone, creditCard) {
     localStorage.clear();
+    let currentCartSnapshot = [...this.state.cart];
+    currentCartSnapshot.map(item => {
+      delete item.description;
+      delete item.image;
+    });
     let orderDetails = {
       name,
       address,
       email,
       phone,
       creditCard,
-      cart: JSON.stringify(this.state.cart)
+      cart: JSON.stringify(currentCartSnapshot)
     };
     fetch('/api/orders.php', {
       method: 'POST',
@@ -90,10 +96,9 @@ export default class App extends React.Component {
       headers: { 'Content-Type': 'application/json' }
     })
       .then(res => res.json())
-      .then(res => {
-        let confirmationNumber = res.confirmationNumber;
+      .then(() => {
         localStorage.cart = JSON.stringify([]);
-        this.setState({ cart: [], confirmationNumber });
+        this.setState({ cart: [] });
       })
       .catch(err => console.error('Order failed. Please try again: ', err));
   }
@@ -135,11 +140,18 @@ export default class App extends React.Component {
             <CheckoutForm setView={this.setView} cart={this.state.cart} placeOrder={this.placeOrder}/>
           </React.Fragment>
         );
-      case 'submit':
+      case 'thankyou':
         return (
           <React.Fragment>
             <Header setView={this.setView} cart={this.state.cart}/>
-            <CheckoutForm setView={this.setView} cart={this.state.cart}/>
+            <ThankYou setView={this.setView}/>
+          </React.Fragment>
+        );
+      case 'about':
+        return (
+          <React.Fragment>
+            <Header setView={this.setView} cart={this.state.cart}/>
+            <About setView={this.setView}/>
           </React.Fragment>
         );
     }

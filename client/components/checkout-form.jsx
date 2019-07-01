@@ -17,7 +17,8 @@ export default class CheckoutForm extends React.Component {
         emailState: '',
         phoneState: '',
         creditCardState: ''
-      }
+      },
+      modal: false
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.validateName = this.validateName.bind(this);
@@ -125,6 +126,7 @@ export default class CheckoutForm extends React.Component {
     e.preventDefault();
     this.toggle();
     this.props.placeOrder(this.state.name, this.state.address, this.state.email, this.state.phone, this.state.creditCard);
+    this.props.setView('thankyou', {});
   }
   render() {
     const cartItems = this.props.cart.map((cartItem, index) => <CheckoutSummaryItem key={index} cartItem={cartItem} setView={this.props.setView}/>);
@@ -154,7 +156,7 @@ export default class CheckoutForm extends React.Component {
                     <FormFeedback invalid>Please enter your name.</FormFeedback>
                   </InputGroup>
                   <InputGroup className="mb-1">
-                    <Input placeholder="Address (i.e. 123 Main St, Anywhere, CA 90001)" name="address" valid={ this.state.validate.addressState === 'has-success' } invalid={ this.state.validate.addressState === 'has-danger' } onChange={this.onChangeAddress} />
+                    <Input placeholder="Shipping Address" name="address" valid={ this.state.validate.addressState === 'has-success' } invalid={ this.state.validate.addressState === 'has-danger' } onChange={this.onChangeAddress} />
                     <FormFeedback invalid>Please enter your address.</FormFeedback>
                   </InputGroup>
                   <InputGroup className="mb-1">
@@ -162,7 +164,7 @@ export default class CheckoutForm extends React.Component {
                     <FormFeedback invalid>Please enter a valid e-mail address.</FormFeedback>
                   </InputGroup>
                   <InputGroup>
-                    <Input placeholder="Phone #" name="phone" valid={ this.state.validate.phoneState === 'has-success' } invalid={ this.state.validate.phoneState === 'has-danger' } onChange={this.onChangePhone} />
+                    <Input placeholder="Phone Number" name="phone" valid={ this.state.validate.phoneState === 'has-success' } invalid={ this.state.validate.phoneState === 'has-danger' } onChange={this.onChangePhone} />
                     <FormFeedback invalid>Please enter a 10-digit phone number (with dashes).</FormFeedback>
                   </InputGroup>
                 </CardBody>
@@ -172,7 +174,7 @@ export default class CheckoutForm extends React.Component {
                 <CardBody>
                   <CardText>Billing Information</CardText>
                   <InputGroup>
-                    <Input placeholder="Credit Card # (i.e. 1234567890123456)" name="creditCard" valid={ this.state.validate.creditCardState === 'has-success' } invalid={ this.state.validate.creditCardState === 'has-danger' } onChange={this.onChangeCreditCard} />
+                    <Input placeholder="Credit Card No." name="creditCard" valid={ this.state.validate.creditCardState === 'has-success' } invalid={ this.state.validate.creditCardState === 'has-danger' } onChange={this.onChangeCreditCard} />
                     <FormFeedback invalid>Please enter a valid 16-digit credit card number (no dashes).</FormFeedback>
                   </InputGroup>
                 </CardBody>

@@ -41,6 +41,12 @@
   background-color: orangered;
   border-radius: 10%;
 }
+.thankyou-image {
+  display: block;
+  margin: auto;
+  width: 100%;
+  height: auto;
+}
 
 /* ----------- iPhone 6, 6S, 7 and 8 ----------- */
 
