@@ -35,7 +35,7 @@ export default class App extends React.Component {
     this.setState({ view });
   }
   getProducts() {
-    fetch('/api/products.php', { method: 'GET' })
+    fetch('./api/products.php', { method: 'GET' })
       .then(res => res.json())
       .then(newRes => this.setState({ products: newRes }))
       .catch(err => console.error('Product retrieval failed. Please try again: ', err));
@@ -90,7 +90,7 @@ export default class App extends React.Component {
       creditCard,
       cart: JSON.stringify(currentCartSnapshot)
     };
-    fetch('/api/orders.php', {
+    fetch('./api/orders.php', {
       method: 'POST',
       body: JSON.stringify(orderDetails),
       headers: { 'Content-Type': 'application/json' }
