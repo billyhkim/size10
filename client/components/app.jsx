@@ -13,7 +13,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       products: [],
-      view: { name: 'thankyou', params: {} },
+      view: { name: 'landing', params: {} },
       cart: []
     };
     this.setView = this.setView.bind(this);

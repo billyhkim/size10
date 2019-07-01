@@ -47,6 +47,15 @@
   width: 100%;
   height: auto;
 }
+.billy-image {
+  display: block;
+  margin: auto;
+  width: 25%;
+  height: auto;
+}
+.noselect {
+  user-select: none;
+}
 
 /* ----------- iPhone 6, 6S, 7 and 8 ----------- */
 

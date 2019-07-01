@@ -6,6 +6,7 @@ export default class Landing extends React.Component {
     super(props);
     this.state = { modal: true };
     this.handleCatalogView = this.handleCatalogView.bind(this);
+    this.handleAboutView = this.handleAboutView.bind(this);
     this.toggle = this.toggle.bind(this);
   }
   toggle() {
@@ -16,6 +17,10 @@ export default class Landing extends React.Component {
   handleCatalogView(e) {
     e.preventDefault();
     this.props.setView('catalog', {});
+  }
+  handleAboutView(e) {
+    e.preventDefault();
+    this.props.setView('about', {});
   }
   render() {
     return (
@@ -30,8 +35,8 @@ export default class Landing extends React.Component {
           <Row>
             <Col sm="5" className="h4 card-font text-white">Roger Vivier</Col>
           </Row>
-          <button type="button" className="col-sm-3 btn btn-lg btn-danger btn-block card-font mt-4" onClick={this.handleCatalogView}><i className="fas fa-shoe-prints fa-lg pointer-hover"></i>SHOES</button>
-          <button type="button" className="col-sm-3 btn btn-lg btn-danger btn-block card-font">ABOUT</button>
+          <button type="button" className="col-sm-3 btn btn-lg btn-danger btn-block card-font mt-4" onClick={this.handleCatalogView}><i className="fas fa-shoe-prints fa-lg pointer-hover"></i>CATALOG</button>
+          <button type="button" className="col-sm-3 btn btn-lg btn-danger btn-block card-font" onClick={this.handleAboutView}>ABOUT</button>
         </Container>
 
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
