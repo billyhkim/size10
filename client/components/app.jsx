@@ -5,7 +5,7 @@ import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
 import CheckoutForm from './checkout-form';
-import ThankYou from './thankyou';
+import Confirmation from './confirmation';
 import About from './about';
 
 export default class App extends React.Component {
@@ -14,12 +14,14 @@ export default class App extends React.Component {
     this.state = {
       products: [],
       view: { name: 'landing', params: {} },
-      cart: []
+      cart: [],
+      lastOrder: {}
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.changeQuantityFromCart = this.changeQuantityFromCart.bind(this);
     this.removeFromCart = this.removeFromCart.bind(this);
+    this.grabOrderDetailsForConfirmationPage = this.grabOrderDetailsForConfirmationPage.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
   }
   componentDidMount() {
@@ -75,7 +77,10 @@ export default class App extends React.Component {
     this.setState({ cart: cartSnapshot });
     localStorage.cart = JSON.stringify(cartSnapshot);
   }
-  placeOrder(name, address, email, phone, creditCard) {
+  grabOrderDetailsForConfirmationPage(orderDetails) {
+    this.setState({ lastOrder: orderDetails });
+  }
+  placeOrder(orderId, name, address, email, phone, creditCard) {
     localStorage.clear();
     let currentCartSnapshot = [...this.state.cart];
     currentCartSnapshot.map(item => {
@@ -83,6 +88,7 @@ export default class App extends React.Component {
       delete item.image;
     });
     let orderDetails = {
+      orderId,
       name,
       address,
       email,
@@ -137,14 +143,14 @@ export default class App extends React.Component {
         return (
           <React.Fragment>
             <Header setView={this.setView} cart={this.state.cart}/>
-            <CheckoutForm setView={this.setView} cart={this.state.cart} placeOrder={this.placeOrder}/>
+            <CheckoutForm setView={this.setView} cart={this.state.cart} sendOrderDetails={this.grabOrderDetailsForConfirmationPage} placeOrder={this.placeOrder}/>
           </React.Fragment>
         );
-      case 'thankyou':
+      case 'confirmation':
         return (
           <React.Fragment>
             <Header setView={this.setView} cart={this.state.cart}/>
-            <ThankYou setView={this.setView}/>
+            <Confirmation setView={this.setView} orderDetails={this.state.lastOrder}/>
           </React.Fragment>
         );
       case 'about':

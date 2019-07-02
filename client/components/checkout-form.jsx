@@ -125,7 +125,8 @@ export default class CheckoutForm extends React.Component {
   handleOrder(e) {
     e.preventDefault();
     this.toggle();
-    this.props.placeOrder(this.state.name, this.state.address, this.state.email, this.state.phone, this.state.creditCard);
+    let orderConfirmId = Math.random().toString(36).substr(2, 9).toUpperCase();
+    this.props.placeOrder(orderConfirmId, this.state.name, this.state.address, this.state.email, this.state.phone, this.state.creditCard);
     this.props.setView('thankyou', {});
   }
   render() {
