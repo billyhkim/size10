@@ -12,6 +12,7 @@ if(!$conn){
 $item = file_get_contents('php://input');
 $item = json_decode($item, true);
 
+$order_id = $item['orderId'];
 $name = $item['name'];
 $address = addslashes($item['address']);
 $email = addslashes($item['email']);
@@ -19,7 +20,7 @@ $phone = addslashes($item['phone']);
 $credit_card = $item['creditCard'];
 $order_items = addslashes($item['cart']);
 
-$query = "INSERT INTO `orders` (`name`, `address`, `email`, `phone`, `credit_card`, `order_items`) VALUES ('{$name}','{$address}', '{$email}', '{$phone}', '{$credit_card}', '{$order_items}')";
+$query = "INSERT INTO `orders` (`order_id`, `name`, `address`, `email`, `phone`, `credit_card`, `order_items`) VALUES ('{$order_id}', '{$name}','{$address}', '{$email}', '{$phone}', '{$credit_card}', '{$order_items}')";
 
 $result = mysqli_query($conn, $query);
 
