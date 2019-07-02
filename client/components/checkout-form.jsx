@@ -6,6 +6,7 @@ export default class CheckoutForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      orderId: '',
       name: '',
       address: '',
       email: '',
@@ -120,14 +121,15 @@ export default class CheckoutForm extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault();
+    const orderConfirmId = Math.random().toString(36).substr(2, 9).toUpperCase();
+    this.setState({ orderId: orderConfirmId }, this.props.sendOrderDetails(orderConfirmId, this.props.cart));
     this.toggle();
   }
   handleOrder(e) {
     e.preventDefault();
     this.toggle();
-    let orderConfirmId = Math.random().toString(36).substr(2, 9).toUpperCase();
-    this.props.placeOrder(orderConfirmId, this.state.name, this.state.address, this.state.email, this.state.phone, this.state.creditCard);
-    this.props.setView('thankyou', {});
+    this.props.placeOrder(this.state.orderId, this.state.name, this.state.address, this.state.email, this.state.phone, this.state.creditCard);
+    this.props.setView('confirmation', {});
   }
   render() {
     const cartItems = this.props.cart.map((cartItem, index) => <CheckoutSummaryItem key={index} cartItem={cartItem} setView={this.props.setView}/>);

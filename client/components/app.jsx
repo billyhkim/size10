@@ -13,9 +13,12 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       products: [],
-      view: { name: 'landing', params: {} },
+      view: { name: 'catalog', params: {} },
       cart: [],
-      lastOrder: {}
+      lastOrder: {
+        orderId: null,
+        cart: null
+      }
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
@@ -77,8 +80,8 @@ export default class App extends React.Component {
     this.setState({ cart: cartSnapshot });
     localStorage.cart = JSON.stringify(cartSnapshot);
   }
-  grabOrderDetailsForConfirmationPage(orderDetails) {
-    this.setState({ lastOrder: orderDetails });
+  grabOrderDetailsForConfirmationPage(orderId, cart) {
+    this.setState({ lastOrder: { orderId, cart } });
   }
   placeOrder(orderId, name, address, email, phone, creditCard) {
     localStorage.clear();

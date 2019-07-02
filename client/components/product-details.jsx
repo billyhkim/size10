@@ -69,10 +69,11 @@ export default class ProductDetails extends React.Component {
                   <div className="h4 text-muted mb-3">{this.state.product.name}</div>
                   <div className="h2 mb-3">{(this.state.product.colorway).toUpperCase()}</div>
                   <div className="h4 text-muted mb-3">{'$' + (this.state.product.price / 100).toFixed(2)}</div>
-                  <div className="h4 text-primary mb-4">IN STOCK</div>
-                  <div className="h5 mb-2">Quantity:</div>
+                  <div className="h4 text-primary mb-3">IN STOCK</div>
+                  <div className="h5 mb-1">Quantity:</div>
                   <div className="h4 mb-4 noselect"><i className="fas fa-minus-square pointer-hover ml-3 mr-4" onClick={this.decrementQuantity}></i>{this.state.quantity}<i className="fas fa-plus-square pointer-hover ml-4 mr-3" onClick={this.incrementQuantity}></i></div>
-                  <Button onClick={this.handleAddClick}>ADD TO CART</Button>
+                  <Button size="lg" color="warning" className="mb-2" onClick={this.handleAddClick}>ADD TO CART</Button>
+                  <Button className="card-font d-block m-auto" onClick={this.handleBackClick}><i className="fas fa-arrow-alt-circle-left"></i> BACK TO CATALOG</Button>
                 </div>
               </Col>
             </Row>
@@ -81,9 +82,6 @@ export default class ProductDetails extends React.Component {
             <hr/>
             <div className="h5 description-font">{this.state.product.description}</div>
             <hr/>
-            <Row>
-              <Button className="text-center m-auto" onClick={this.handleBackClick}><i className="fas fa-arrow-alt-circle-left pointer-hover"></i></Button>
-            </Row>
           </Container>
           <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
             <ModalHeader className="card-font" toggle={this.toggle}><i className="fas fa-check-circle text-success"></i> ADDED TO CART</ModalHeader>
