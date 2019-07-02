@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 01, 2019 at 10:25 PM
+-- Generation Time: Jul 02, 2019 at 10:07 PM
 -- Server version: 5.7.26-0ubuntu0.18.04.1
 -- PHP Version: 7.2.17-0ubuntu0.18.04.1
 
@@ -28,11 +28,12 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `orders` (
   `id` smallint(5) UNSIGNED NOT NULL,
+  `order_id` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `order_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `name` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `address` text COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `phone` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
+  `phone` varchar(14) COLLATE utf8_unicode_ci NOT NULL,
   `credit_card` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
   `order_items` text COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -98,7 +99,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 --
 -- AUTO_INCREMENT for table `products`
 --

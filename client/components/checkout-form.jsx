@@ -42,6 +42,10 @@ export default class CheckoutForm extends React.Component {
       modal: !prevState.modal
     }));
   }
+  componentDidMount() {
+    const orderConfirmId = Math.random().toString(36).substr(2, 9).toUpperCase();
+    this.setState({ orderId: orderConfirmId });
+  }
   handleInputChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
@@ -121,8 +125,15 @@ export default class CheckoutForm extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-    const orderConfirmId = Math.random().toString(36).substr(2, 9).toUpperCase();
-    this.setState({ orderId: orderConfirmId }, this.props.sendOrderDetails(orderConfirmId, this.props.cart));
+    const clientInfo = {
+      orderId: this.state.orderId,
+      name: this.state.name,
+      address: this.state.address,
+      email: this.state.email,
+      phone: this.state.phone,
+      creditCard: this.state.creditCard
+    };
+    this.props.sendClientDetails(clientInfo);
     this.toggle();
   }
   handleOrder(e) {
@@ -146,7 +157,7 @@ export default class CheckoutForm extends React.Component {
     const submitBtnBasedOnFormCompletion = (this.state.validate.nameState && this.state.validate.addressState && this.state.validate.emailState && this.state.validate.phoneState && this.state.validate.creditCardState) === 'has-success' ? <button type="button" className="btn btn-lg btn-warning btn-block card-font" onClick={this.handleSubmit}>SUBMIT ORDER</button> : <button type="button" className="btn btn-lg btn-warning btn-block card-font">PLEASE COMPLETE FORM TO SUBMIT</button>;
     return (
       <React.Fragment>
-        <Container className="mt-4 mb-4">
+        <Container className="mt-4 mb-5">
           <div className="h1 text-center card-font mb-4">CHECKOUT</div>
           <Row>
             <Col sm="7">
