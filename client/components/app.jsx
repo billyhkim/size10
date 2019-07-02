@@ -13,18 +13,18 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       products: [],
-      view: { name: 'catalog', params: {} },
+      view: { name: 'landing', params: {} },
       cart: [],
       lastOrder: {
-        orderId: null,
-        cart: null
+        clientInfo: {},
+        cart: []
       }
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.changeQuantityFromCart = this.changeQuantityFromCart.bind(this);
     this.removeFromCart = this.removeFromCart.bind(this);
-    this.grabOrderDetailsForConfirmationPage = this.grabOrderDetailsForConfirmationPage.bind(this);
+    this.grabClientDetailsForConfirmationPage = this.grabClientDetailsForConfirmationPage.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
   }
   componentDidMount() {
@@ -80,8 +80,8 @@ export default class App extends React.Component {
     this.setState({ cart: cartSnapshot });
     localStorage.cart = JSON.stringify(cartSnapshot);
   }
-  grabOrderDetailsForConfirmationPage(orderId, cart) {
-    this.setState({ lastOrder: { orderId, cart } });
+  grabClientDetailsForConfirmationPage(clientInfo) {
+    this.setState({ lastOrder: { clientInfo, cart: JSON.parse(localStorage.cart) } });
   }
   placeOrder(orderId, name, address, email, phone, creditCard) {
     localStorage.clear();
@@ -146,14 +146,14 @@ export default class App extends React.Component {
         return (
           <React.Fragment>
             <Header setView={this.setView} cart={this.state.cart}/>
-            <CheckoutForm setView={this.setView} cart={this.state.cart} sendOrderDetails={this.grabOrderDetailsForConfirmationPage} placeOrder={this.placeOrder}/>
+            <CheckoutForm setView={this.setView} cart={this.state.cart} sendClientDetails={this.grabClientDetailsForConfirmationPage} placeOrder={this.placeOrder}/>
           </React.Fragment>
         );
       case 'confirmation':
         return (
           <React.Fragment>
             <Header setView={this.setView} cart={this.state.cart}/>
-            <Confirmation setView={this.setView} orderDetails={this.state.lastOrder}/>
+            <Confirmation setView={this.setView} order={this.state.lastOrder}/>
           </React.Fragment>
         );
       case 'about':
