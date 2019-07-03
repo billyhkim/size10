@@ -36,11 +36,13 @@ export default class ProductDetails extends React.Component {
   }
   handleContinueClick(e) {
     e.preventDefault();
+    this.setState({ quantity: 1 });
     this.toggle();
     this.props.setView('catalog', {});
   }
   handleCartClick(e) {
     e.preventDefault();
+    this.setState({ quantity: 1 });
     this.toggle();
     this.props.setView('cart', {});
   }
