@@ -46,7 +46,11 @@ export default class App extends React.Component {
       .catch(err => console.error('Product retrieval failed. Please try again: ', err));
   }
   addToCart(productAsObject, productQuantity) {
+    // set productAsObject.quantity to zero so additional items are not added from previous add to carts
+    productAsObject.quantity = 0;
+
     let cartSnapshot = JSON.parse(localStorage.getItem('cart'));
+    // check to see if product model (id) is already in cart
     let checkIfProductAdded = cartSnapshot.findIndex(itemIndex => {
       return itemIndex.id === productAsObject.id;
     });

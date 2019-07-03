@@ -22,9 +22,6 @@ export default class ProductDetails extends React.Component {
       modal: !prevState.modal
     }));
   }
-  componentDidMount() {
-    this.setState({ quantity: 1 });
-  }
   handleBackClick(e) {
     e.preventDefault();
     this.props.setView('catalog', {});
