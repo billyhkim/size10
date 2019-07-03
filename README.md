@@ -1,4 +1,6 @@
 # size10 👟
+* Live Demo: __https://size10.billyhkim.dev__
+
 ![](size10.gif)
 <hr/>
 
@@ -22,6 +24,9 @@ $ npm install
 $ npm run dev
 ```
 5. Go to ```localhost:3000``` and enjoy 😃
+
+## Contributing
+Please feel free to fork this repo, make changes, submit pull requests, and send suggestions to billyhkim.dev@gmail.com to make this app better.
 
 ## Built With
 * Front-End
