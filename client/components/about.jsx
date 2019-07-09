@@ -13,9 +13,10 @@ export default class About extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Container className="mt-2 mb-2">
+        <img className="banner-image" src="./media/thankyou.jpg" alt="Thank you banner image"/>
+        <Container className="mt-3 mb-5">
           <Row>
-            <Col sm={{ size: 8, offset: 2 }} className="mb-2">
+            <Col sm={{ size: 8, offset: 2 }} className="mb-3">
               <div className="border border-secondary rounded p-2">
                 <div className="h1 card-font">Me.</div>
                 <hr/>
@@ -28,9 +29,8 @@ export default class About extends React.Component {
               </div>
             </Col>
           </Row>
-          <button type="button" className="btn btn-lg btn-warning btn-block card-font" onClick={this.handleCatalogView}><i className="fas fa-shoe-prints fa-lg pointer-hover"></i>CATALOG</button>
+          <button type="button" className="btn btn-lg btn-warning btn-block card-font" onClick={this.handleCatalogView}><i className="fas fa-shoe-prints fa-lg pointer-hover"></i> CATALOG</button>
         </Container>
-        <img className="thankyou-image mt-2" src="./media/thankyou.jpg" alt="Thank you banner image"/>
       </React.Fragment>
     );
   }
