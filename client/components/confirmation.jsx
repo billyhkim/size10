@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import { Col, Container, Row } from 'reactstrap';
 import CheckoutSummaryItem from './checkout-summary-item';
 
 export default class Confirmation extends React.Component {
@@ -48,7 +48,7 @@ export default class Confirmation extends React.Component {
           <hr/>
           <button type="button" className="btn btn-lg btn-warning btn-block card-font" onClick={this.handleHomeView}>BACK HOME</button>
         </Container>
-        <img className="thankyou-image" src="./media/thankyoubanner.jpg" alt="Thank you banner image"/>
+        <img className="banner-image" src="./media/thankyoubanner.jpg" alt="Thank you banner image"/>
       </React.Fragment>
     );
   }
