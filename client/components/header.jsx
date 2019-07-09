@@ -1,5 +1,5 @@
 import React from 'react';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Collapse, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
 
 export default class Header extends React.Component {
   constructor(props) {
@@ -50,19 +50,14 @@ export default class Header extends React.Component {
                 <NavLink><i className="fas fa-home fa-lg pointer-hover" onClick={this.handleLandingView}></i></NavLink>
               </NavItem>
               <NavItem>
-                <NavLink><i className="fas fa-shoe-prints fa-lg pointer-hover" onClick={this.handleCatalogView}></i></NavLink>
+                <NavLink className="pointer-hover" onClick={this.handleCatalogView}><i className="fas fa-shoe-prints fa-lg"></i>Catalog</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink className="pointer-hover" onClick={this.handleCartView}><i className="fas fa-shopping-cart fa-lg d-inline-block"></i><div className="cart-quantity d-inline-block pl-1 pr-1">{orderQuantities}</div></NavLink>
               </NavItem>
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret className="noselect">More</DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem href="https://github.com/billyhkim/size10" target="_blank">GitHub</DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem onClick={this.handleAboutView}>About</DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
+              <NavItem>
+                <NavLink className="pointer-hover" onClick={this.handleAboutView}>About</NavLink>
+              </NavItem>
             </Nav>
           </Collapse>
         </Navbar>
