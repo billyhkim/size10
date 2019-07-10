@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardHeader, CardBody, CardText, InputGroup, Input, FormFeedback, Row, Col, Container, Modal, ModalBody, ModalHeader, ModalFooter, Button } from 'reactstrap';
+import { Button, Card, CardBody, CardHeader, CardText, Col, Container, FormFeedback, Input, InputGroup, Modal, ModalBody, ModalFooter, ModalHeader, Row, UncontrolledTooltip } from 'reactstrap';
 import CheckoutSummaryItem from './checkout-summary-item';
 
 export default class CheckoutForm extends React.Component {
@@ -12,12 +12,16 @@ export default class CheckoutForm extends React.Component {
       email: '',
       phone: '',
       creditCard: '',
+      ccExpiration: '',
+      cvv: '',
       validate: {
         nameState: '',
         addressState: '',
         emailState: '',
         phoneState: '',
-        creditCardState: ''
+        creditCardState: '',
+        ccExpirationState: '',
+        cvvState: ''
       },
       modal: false
     };
@@ -32,19 +36,23 @@ export default class CheckoutForm extends React.Component {
     this.onChangePhone = this.onChangePhone.bind(this);
     this.validateCreditCard = this.validateCreditCard.bind(this);
     this.onChangeCreditCard = this.onChangeCreditCard.bind(this);
+    this.validateExpiration = this.validateExpiration.bind(this);
+    this.onChangeExpiration = this.onChangeExpiration.bind(this);
+    this.validateCvv = this.validateCvv.bind(this);
+    this.onChangeCvv = this.onChangeCvv.bind(this);
     this.handleCartClick = this.handleCartClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleOrder = this.handleOrder.bind(this);
     this.toggle = this.toggle.bind(this);
   }
+  componentDidMount() {
+    const orderConfirmId = Math.random().toString(36).substr(2, 9).toUpperCase();
+    this.setState({ orderId: orderConfirmId });
+  }
   toggle() {
     this.setState(prevState => ({
       modal: !prevState.modal
     }));
-  }
-  componentDidMount() {
-    const orderConfirmId = Math.random().toString(36).substr(2, 9).toUpperCase();
-    this.setState({ orderId: orderConfirmId });
   }
   handleInputChange(e) {
     this.setState({ [e.target.name]: e.target.value });
@@ -80,7 +88,7 @@ export default class CheckoutForm extends React.Component {
     this.setState({ validate });
   }
   validatePhone(e) {
-    const phoneRegex = /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/;
+    const phoneRegex = /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/im;
     const { validate } = this.state;
     if (phoneRegex.test(e.target.value)) {
       validate.phoneState = 'has-success';
@@ -96,6 +104,26 @@ export default class CheckoutForm extends React.Component {
       validate.creditCardState = 'has-success';
     } else {
       validate.creditCardState = 'has-danger';
+    }
+    this.setState({ validate });
+  }
+  validateExpiration(e) {
+    const expirationRegex = /^\d{2}\/\d{2}$/;
+    const { validate } = this.state;
+    if (expirationRegex.test(e.target.value)) {
+      validate.ccExpirationState = 'has-success';
+    } else {
+      validate.ccExpirationState = 'has-danger';
+    }
+    this.setState({ validate });
+  }
+  validateCvv(e) {
+    const cvvRegex = /^[0-9]{3,4}$/;
+    const { validate } = this.state;
+    if (cvvRegex.test(e.target.value)) {
+      validate.cvvState = 'has-success';
+    } else {
+      validate.cvvState = 'has-danger';
     }
     this.setState({ validate });
   }
@@ -118,6 +146,14 @@ export default class CheckoutForm extends React.Component {
   onChangeCreditCard(e) {
     this.handleInputChange(e);
     this.validateCreditCard(e);
+  }
+  onChangeExpiration(e) {
+    this.handleInputChange(e);
+    this.validateExpiration(e);
+  }
+  onChangeCvv(e) {
+    this.handleInputChange(e);
+    this.validateCvv(e);
   }
   handleCartClick(e) {
     e.preventDefault();
@@ -154,7 +190,7 @@ export default class CheckoutForm extends React.Component {
     }, 0);
     const taxedTotal = (totalCartPrice / 100 * 0.0775).toFixed(2);
     const totalPrice = (parseFloat(totalCartPrice / 100) + 10 + parseFloat(taxedTotal)).toFixed(2);
-    const submitBtnBasedOnFormCompletion = (this.state.validate.nameState && this.state.validate.addressState && this.state.validate.emailState && this.state.validate.phoneState && this.state.validate.creditCardState) === 'has-success' ? <button type="button" className="btn btn-lg btn-warning btn-block card-font" onClick={this.handleSubmit}>SUBMIT ORDER</button> : <button type="button" className="btn btn-lg btn-warning btn-block card-font">PLEASE COMPLETE FORM TO SUBMIT</button>;
+    const submitBtnBasedOnFormCompletion = (this.state.validate.nameState && this.state.validate.addressState && this.state.validate.emailState && this.state.validate.phoneState && this.state.validate.creditCardState && this.state.validate.ccExpirationState && this.state.validate.cvvState) === 'has-success' ? <button type="button" className="btn btn-lg btn-warning btn-block card-font" onClick={this.handleSubmit}>CONFIRM SHIPPING & BILLING</button> : <button type="button" className="btn btn-lg btn-danger btn-block card-font">INPUT SHIPPING & BILILNG INFO</button>;
     return (
       <React.Fragment>
         <Container className="mt-4 mb-5">
@@ -164,7 +200,8 @@ export default class CheckoutForm extends React.Component {
               <Card className="mb-2">
                 <CardHeader className="h3 card-font text-white" style={{ backgroundColor: '#333', borderColor: '#333' }}>1. SHIPPING</CardHeader>
                 <CardBody>
-                  <CardText>Shipping + Billing Address</CardText>
+                  <CardText>Shipping + Billing Address <i className="fas fa-question-circle pointer-hover" href="#" id="tooltip2"></i></CardText>
+                  <UncontrolledTooltip placement="right" target="tooltip2"><span className="text-warning font-weight-bold">Note: This is a demo please do not input actual information!</span></UncontrolledTooltip>
                   <InputGroup className="mb-1">
                     <Input placeholder="Name" name="name" valid={ this.state.validate.nameState === 'has-success' } invalid={ this.state.validate.nameState === 'has-danger' } onChange={this.onChangeName} />
                     <FormFeedback invalid>Please enter your name.</FormFeedback>
@@ -179,17 +216,26 @@ export default class CheckoutForm extends React.Component {
                   </InputGroup>
                   <InputGroup>
                     <Input placeholder="Phone Number" name="phone" valid={ this.state.validate.phoneState === 'has-success' } invalid={ this.state.validate.phoneState === 'has-danger' } onChange={this.onChangePhone} />
-                    <FormFeedback invalid>Please enter a 10-digit phone number (with dashes).</FormFeedback>
+                    <FormFeedback invalid>Please enter a valid 10-digit phone number.</FormFeedback>
                   </InputGroup>
                 </CardBody>
               </Card>
               <Card className="mb-4">
                 <CardHeader className="h3 card-font text-white" style={{ backgroundColor: '#333', borderColor: '#333' }}>2. BILLING</CardHeader>
                 <CardBody>
-                  <CardText>Billing Information</CardText>
-                  <InputGroup>
+                  <CardText>Credit Card Information <i className="fas fa-question-circle pointer-hover" href="#" id="tooltip1"></i></CardText>
+                  <UncontrolledTooltip placement="right" target="tooltip1"><span className="text-warning font-weight-bold">Note: This is a demo please do not input actual billing or CC information!</span></UncontrolledTooltip>
+                  <InputGroup className="mb-1">
                     <Input placeholder="Credit Card No." name="creditCard" valid={ this.state.validate.creditCardState === 'has-success' } invalid={ this.state.validate.creditCardState === 'has-danger' } onChange={this.onChangeCreditCard} />
                     <FormFeedback invalid>Please enter a valid 16-digit credit card number (no dashes).</FormFeedback>
+                  </InputGroup>
+                  <InputGroup className="mb-1">
+                    <Input placeholder="Expiration Date (ex. 01/20)" name="ccExpiration" valid={ this.state.validate.ccExpirationState === 'has-success' } invalid={ this.state.validate.ccExpirationState === 'has-danger' } onChange={this.onChangeExpiration} />
+                    <FormFeedback invalid>Please enter a valid 4-digit expiration date (mm/yy).</FormFeedback>
+                  </InputGroup>
+                  <InputGroup className="">
+                    <Input placeholder="CVV" name="cvv" valid={ this.state.validate.cvvState === 'has-success' } invalid={ this.state.validate.cvvState === 'has-danger' } onChange={this.onChangeCvv} />
+                    <FormFeedback invalid>Please enter a valid 3 or 4 digit CVV (back of card).</FormFeedback>
                   </InputGroup>
                 </CardBody>
               </Card>
@@ -198,14 +244,21 @@ export default class CheckoutForm extends React.Component {
               <div className="h3 card-font">IN YOUR CART</div>
               <span className="h6 description-font text-muted">{orderQuantities} item(s)</span>
               <hr/>
-              <div className="h6 description-font">Subtotal: <span className="float-right">${(totalCartPrice / 100).toFixed(2)}</span></div>
-              <div className="h6 description-font">Shipping: <span className="float-right">${(10).toFixed(2)}</span></div>
-              <div className="h6 description-font mb-4">Tax: <span className="float-right">${taxedTotal}</span></div>
+              <div className="h6 description-font">Subtotal:
+                <span className="float-right">${(totalCartPrice / 100).toFixed(2)}</span></div>
+              <div className="h6 description-font">Shipping: <i className="fas fa-question-circle pointer-hover" href="#" id="tooltip-shipping"></i>
+                <span className="float-right">${(10).toFixed(2)}</span>
+                <UncontrolledTooltip placement="right" target="tooltip-shipping"><span className="text-warning font-weight-bold">Shipping is set at a flat-rate of $10</span></UncontrolledTooltip>
+              </div>
+              <div className="h6 description-font mb-4">Tax: <i className="fas fa-question-circle pointer-hover" href="#" id="tooltip-tax"></i>
+                <span className="float-right">${taxedTotal}</span>
+                <UncontrolledTooltip placement="right" target="tooltip-tax"><span className="text-warning font-weight-bold">Sales tax is based on Orange County, CA&apos;s rate of 7.75%</span></UncontrolledTooltip>
+              </div>
               <hr/>
               <div className="h4 card-font mb-4 text-orange">TOTAL : <span className="float-right">${totalPrice}</span></div>
-              {cartItems}
               <button type="button" className="btn btn-lg btn-secondary btn-block card-font" onClick={this.handleCartClick}>BACK TO CART</button>
               {submitBtnBasedOnFormCompletion}
+              {cartItems}
             </Col>
           </Row>
         </Container>
@@ -213,7 +266,31 @@ export default class CheckoutForm extends React.Component {
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader className="card-font" toggle={this.toggle}><i className="fas fa-exclamation-circle text-warning"></i> FINAL CONFIRMATION</ModalHeader>
           <ModalBody>
-            <div className="container align-items-center mt-1 mb-1 description-font">Would you like to submit your order?</div>
+            <div className="container mb-3 text-center description-font font-weight-bold">Would you like to submit your order?</div>
+            <Container>
+              <Row>
+                <Col>
+                  <div className="card-font">1. SHIPPING</div>
+                  <div className="description-font">{this.state.name}</div>
+                  <div className="description-font">{this.state.address}</div>
+                  <div className="description-font">{this.state.email}</div>
+                  <div className="description-font">{this.state.phone}</div>
+                </Col>
+                <Col>
+                  <div className="card-font">2. BILLING</div>
+                  <div className="description-font">CC #: {this.state.creditCard}</div>
+                  <div className="description-font">Exp.: {this.state.ccExpiration}</div>
+                  <div className="description-font">CVV: {this.state.cvv}</div>
+                </Col>
+              </Row>
+            </Container>
+            <hr/>
+            <div className="h3 card-font text-center font-weight-bold">Order Total: ${totalPrice}</div>
+            <div className="description-font text-muted text-center">{orderQuantities} item(s)</div>
+            <div className="align-content-center">
+              {cartItems}
+            </div>
+
           </ModalBody>
           <ModalFooter className="card-font">
             <Button color="secondary" onClick={this.toggle}>RETURN TO CHECKOUT</Button>{' '}

@@ -39,7 +39,7 @@ export default class Confirmation extends React.Component {
               <div className="h5 card-font">{this.props.order.clientInfo.phone}</div>
               <div className="h5 card-font">{this.props.order.clientInfo.email}</div>
               <div className="h5 card-font">2. Billing Info</div>
-              <div className="h5 card-font">CC #: {this.props.order.clientInfo.creditCard}</div>
+              <div className="h5 card-font">Credit Card (last 4 digits):  {this.props.order.clientInfo.creditCard.substr(-4, 4)}</div>
             </Col>
             <Col sm="6">
               {cartItems}
