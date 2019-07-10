@@ -256,7 +256,6 @@ export default class CheckoutForm extends React.Component {
               </div>
               <hr/>
               <div className="h4 card-font mb-4 text-orange">TOTAL : <span className="float-right">${totalPrice}</span></div>
-              {/* {cartItems} */}
               <button type="button" className="btn btn-lg btn-secondary btn-block card-font" onClick={this.handleCartClick}>BACK TO CART</button>
               {submitBtnBasedOnFormCompletion}
               {cartItems}
