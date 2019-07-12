@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, Card, CardBody, CardHeader, CardText, Col, Container, FormFeedback, Input, InputGroup, Modal, ModalBody, ModalFooter, ModalHeader, Row, UncontrolledTooltip } from 'reactstrap';
+import ReactTooltip from 'react-tooltip';
+import { Button, Card, CardBody, CardHeader, CardText, Col, Container, FormFeedback, Input, InputGroup, Modal, ModalBody, ModalFooter, ModalHeader, Row } from 'reactstrap';
 import CheckoutSummaryItem from './checkout-summary-item';
 
 export default class CheckoutForm extends React.Component {
@@ -200,8 +201,10 @@ export default class CheckoutForm extends React.Component {
               <Card className="mb-2">
                 <CardHeader className="h3 card-font text-white" style={{ backgroundColor: '#333', borderColor: '#333' }}>1. SHIPPING</CardHeader>
                 <CardBody>
-                  <CardText>Shipping + Billing Address <i className="fas fa-question-circle pointer-hover" href="#" id="tooltip2"></i></CardText>
-                  <UncontrolledTooltip placement="right" target="tooltip2"><span className="text-warning font-weight-bold">Note: This is a demo please do not input actual information!</span></UncontrolledTooltip>
+                  <CardText>Shipping + Billing Address <i className="fas fa-question-circle pointer-hover text-warning" href="#" data-tip data-for="tooltip1"/></CardText>
+                  <ReactTooltip id="tooltip1" place="right" type="dark" effect="solid">
+                    <span className="font-weight-bold">Note: This is a demo please do not input actual information!</span>
+                  </ReactTooltip>
                   <InputGroup className="mb-1">
                     <Input placeholder="Name" name="name" valid={ this.state.validate.nameState === 'has-success' } invalid={ this.state.validate.nameState === 'has-danger' } onChange={this.onChangeName} />
                     <FormFeedback invalid>Please enter your name.</FormFeedback>
@@ -223,8 +226,10 @@ export default class CheckoutForm extends React.Component {
               <Card className="mb-4">
                 <CardHeader className="h3 card-font text-white" style={{ backgroundColor: '#333', borderColor: '#333' }}>2. BILLING</CardHeader>
                 <CardBody>
-                  <CardText>Credit Card Information <i className="fas fa-question-circle pointer-hover" href="#" id="tooltip1"></i></CardText>
-                  <UncontrolledTooltip placement="right" target="tooltip1"><span className="text-warning font-weight-bold">Note: This is a demo please do not input actual billing or CC information!</span></UncontrolledTooltip>
+                  <CardText>Credit Card Information <i className="fas fa-question-circle pointer-hover text-warning" href="#" data-tip data-for="tooltip2"/></CardText>
+                  <ReactTooltip id="tooltip2" place="right" type="dark" effect="solid">
+                    <span className="font-weight-bold">Note: This is a demo please do not input actual billing or CC information.</span>
+                  </ReactTooltip>
                   <InputGroup className="mb-1">
                     <Input placeholder="Credit Card No." name="creditCard" valid={ this.state.validate.creditCardState === 'has-success' } invalid={ this.state.validate.creditCardState === 'has-danger' } onChange={this.onChangeCreditCard} />
                     <FormFeedback invalid>Please enter a valid 16-digit credit card number (no dashes).</FormFeedback>
@@ -246,13 +251,17 @@ export default class CheckoutForm extends React.Component {
               <hr/>
               <div className="h6 description-font">Subtotal:
                 <span className="float-right">${(totalCartPrice / 100).toFixed(2)}</span></div>
-              <div className="h6 description-font">Shipping: <i className="fas fa-question-circle pointer-hover" href="#" id="tooltip-shipping"></i>
+              <div className="h6 description-font">Shipping: <i className="fas fa-question-circle pointer-hover  text-warning" href="#" data-tip data-for="tooltip3"/>
+                <ReactTooltip id="tooltip3" place="right" type="dark" effect="solid">
+                  <span className="font-weight-bold">Shipping is set at a flat-rate of $10</span>
+                </ReactTooltip>
                 <span className="float-right">${(10).toFixed(2)}</span>
-                <UncontrolledTooltip placement="right" target="tooltip-shipping"><span className="text-warning font-weight-bold">Shipping is set at a flat-rate of $10</span></UncontrolledTooltip>
               </div>
-              <div className="h6 description-font mb-4">Tax: <i className="fas fa-question-circle pointer-hover" href="#" id="tooltip-tax"></i>
+              <div className="h6 description-font mb-4">Tax: <i className="fas fa-question-circle pointer-hover text-warning" href="#" data-tip data-for="tooltip4"/>
                 <span className="float-right">${taxedTotal}</span>
-                <UncontrolledTooltip placement="right" target="tooltip-tax"><span className="text-warning font-weight-bold">Sales tax is based on Orange County, CA&apos;s rate of 7.75%</span></UncontrolledTooltip>
+                <ReactTooltip id="tooltip4" place="right" type="dark" effect="solid">
+                  <span className="font-weight-bold">Sales tax is based on Orange County, CA&apos;s rate of 7.75%</span>
+                </ReactTooltip>
               </div>
               <hr/>
               <div className="h4 card-font mb-4 text-orange">TOTAL : <span className="float-right">${totalPrice}</span></div>
