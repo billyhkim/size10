@@ -39,17 +39,17 @@ export default class Landing extends React.Component {
             <Col sm="4" className="h1 header-font pt-5">We&apos;re size10</Col>
           </Row>
           <Row>
-            <Col sm="5" className="h3 card-font mb-3">Where all of our shoes are size 10.<br/></Col>
+            <Col sm="4" className="h3 card-font mb-3">Where all of our shoes are size 10.<br/></Col>
           </Row>
           <Row>
-            <Col sm="5" className="h3 card-font pt-3 landing-quote">&quot;To wear dreams on one’s feet is to begin to give a reality to one’s dreams.&quot;<br/></Col>
+            <Col sm="6" className="h3 card-font pt-3 landing-quote">&quot;To wear dreams on one’s feet is to begin to give a reality to one’s dreams.&quot;<br/></Col>
           </Row>
           <Row>
             <Col sm="5" className="h4 card-font text-white">Roger Vivier</Col>
           </Row>
-          <button type="button" className="col-sm-3 btn btn-lg btn-danger btn-block card-font mt-4" onClick={this.handleCatalogView}><i className="fas fa-shoe-prints fa-lg pointer-hover"></i> CATALOG</button>
-          <button type="button" className="col-sm-3 btn btn-lg btn-danger btn-block card-font" onClick={this.handleAboutView}>ABOUT</button>
-          <button type="button" className="col-sm-3 btn btn-lg btn-danger btn-block card-font" onClick={this.toggle}>DISCLAIMER</button>
+          <button type="button" className="col-sm-4 btn btn-lg btn-danger btn-block card-font mt-4 mb-3" onClick={this.handleCatalogView}><i className="fas fa-shoe-prints fa-lg pointer-hover"></i> CATALOG</button>
+          <button type="button" className="col-sm-4 btn btn-lg btn-danger btn-block card-font mb-3" onClick={this.handleAboutView}>ABOUT</button>
+          <button type="button" className="col-sm-4 btn btn-lg btn-danger btn-block card-font" onClick={this.toggle}>DISCLAIMER</button>
         </Container>
 
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className} backdrop={'static'}>
