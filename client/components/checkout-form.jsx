@@ -109,7 +109,7 @@ export default class CheckoutForm extends React.Component {
     this.setState({ validate });
   }
   validateExpiration(e) {
-    const expirationRegex = /^\d{2}\/\d{2}$/;
+    const expirationRegex = /^(1[0-2]|0[1-9]|\d)\/([2-9]\d[1-9]\d|[1-9]\d)$/;
     const { validate } = this.state;
     if (expirationRegex.test(e.target.value)) {
       validate.ccExpirationState = 'has-success';
@@ -191,7 +191,7 @@ export default class CheckoutForm extends React.Component {
     }, 0);
     const taxedTotal = (totalCartPrice / 100 * 0.0775).toFixed(2);
     const totalPrice = (parseFloat(totalCartPrice / 100) + 10 + parseFloat(taxedTotal)).toFixed(2);
-    const submitBtnBasedOnFormCompletion = (this.state.validate.nameState && this.state.validate.addressState && this.state.validate.emailState && this.state.validate.phoneState && this.state.validate.creditCardState && this.state.validate.ccExpirationState && this.state.validate.cvvState) === 'has-success' ? <button type="button" className="btn btn-lg btn-warning btn-block card-font" onClick={this.handleSubmit}>CONFIRM SHIPPING & BILLING</button> : <button type="button" className="btn btn-lg btn-danger btn-block card-font">INPUT SHIPPING & BILILNG INFO</button>;
+    const submitBtnBasedOnFormCompletion = (this.state.validate.nameState && this.state.validate.addressState && this.state.validate.emailState && this.state.validate.phoneState && this.state.validate.creditCardState && this.state.validate.ccExpirationState && this.state.validate.cvvState) === 'has-success' ? <button type="button" className="btn btn-lg btn-success btn-block card-font" onClick={this.handleSubmit}>CONFIRM SHIPPING & BILLING</button> : <button type="button" className="btn btn-lg btn-danger btn-block card-font">INPUT SHIPPING & BILILNG INFO</button>;
     return (
       <React.Fragment>
         <Container className="mt-4 mb-5">
@@ -235,8 +235,8 @@ export default class CheckoutForm extends React.Component {
                     <FormFeedback invalid>Please enter a valid 16-digit credit card number (no dashes).</FormFeedback>
                   </InputGroup>
                   <InputGroup className="mb-1">
-                    <Input placeholder="Expiration Date (ex. 01/20)" name="ccExpiration" valid={ this.state.validate.ccExpirationState === 'has-success' } invalid={ this.state.validate.ccExpirationState === 'has-danger' } onChange={this.onChangeExpiration} />
-                    <FormFeedback invalid>Please enter a valid 4-digit expiration date (mm/yy).</FormFeedback>
+                    <Input placeholder="Expiration Date (ex. 01/20 or 1/2020)" name="ccExpiration" valid={ this.state.validate.ccExpirationState === 'has-success' } invalid={ this.state.validate.ccExpirationState === 'has-danger' } onChange={this.onChangeExpiration} />
+                    <FormFeedback invalid>Please enter a valid expiration date (mm/yy or mm/yyyy).</FormFeedback>
                   </InputGroup>
                   <InputGroup className="">
                     <Input placeholder="CVV" name="cvv" valid={ this.state.validate.cvvState === 'has-success' } invalid={ this.state.validate.cvvState === 'has-danger' } onChange={this.onChangeCvv} />
@@ -303,7 +303,7 @@ export default class CheckoutForm extends React.Component {
           </ModalBody>
           <ModalFooter className="card-font">
             <Button color="secondary" onClick={this.toggle}>RETURN TO CHECKOUT</Button>{' '}
-            <Button color="warning" onClick={this.handleOrder}>SUBMIT ORDER</Button>
+            <Button color="success" onClick={this.handleOrder}>SUBMIT ORDER</Button>
           </ModalFooter>
         </Modal>
       </React.Fragment>
