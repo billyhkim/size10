@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import ReactTooltip from 'react-tooltip';
+import { Col, Container, Row } from 'reactstrap';
 import CartSummaryItem from './cart-summary-item';
 
 export default class CartSummary extends React.Component {
@@ -42,8 +43,14 @@ export default class CartSummary extends React.Component {
             <div className="h2 card-font">SUMMARY</div>
             <hr/>
             <div className="h6 description-font">Subtotal: <span className="float-right">${(totalCartPrice / 100).toFixed(2)}</span></div>
-            <div className="h6 description-font">Shipping: <span className="float-right">${emptySummaryCheck.toFixed(2)}</span></div>
-            <div className="h6 description-font mb-4">Tax: <span className="float-right">${taxedTotal}</span></div>
+            <div className="h6 description-font">Shipping: <i className="fas fa-question-circle pointer-hover text-warning" href="#" data-tip data-for="tooltip-cart1"/> <span className="float-right">${emptySummaryCheck.toFixed(2)}</span></div>
+            <ReactTooltip id="tooltip-cart1" place="right" type="dark" effect="solid">
+              <span className="font-weight-bold">Shipping is set at a flat-rate of $10</span>
+            </ReactTooltip>
+            <div className="h6 description-font mb-4">Tax: <i className="fas fa-question-circle pointer-hover text-warning" href="#" data-tip data-for="tooltip-cart2"/> <span className="float-right">${taxedTotal}</span></div>
+            <ReactTooltip id="tooltip-cart2" place="right" type="dark" effect="solid">
+              <span className="font-weight-bold">Sales tax is based on Orange County, CA&apos;s rate of 7.75%</span>
+            </ReactTooltip>
             <hr/>
             <div className="h4 card-font mb-4">TOTAL : <span className="float-right">${totalPrice}</span></div>
             <button type="button" className="btn btn-lg btn-secondary btn-block card-font" onClick={this.handleBackClick}>BACK TO CATALOG</button>
