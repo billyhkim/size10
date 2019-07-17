@@ -203,7 +203,7 @@ export default class CheckoutForm extends React.Component {
                 <CardBody>
                   <CardText>Shipping + Billing Address <i className="fas fa-question-circle pointer-hover text-warning" href="#" data-tip data-for="tooltip1"/></CardText>
                   <ReactTooltip id="tooltip1" place="right" type="dark" effect="solid">
-                    <span className="font-weight-bold">Note: This is a demo please do not input actual information!</span>
+                    <span className="font-weight-bold">Note: This is a demo please do not input actual information</span>
                   </ReactTooltip>
                   <InputGroup className="mb-1">
                     <Input placeholder="Name" name="name" valid={ this.state.validate.nameState === 'has-success' } invalid={ this.state.validate.nameState === 'has-danger' } onChange={this.onChangeName} />
@@ -228,7 +228,7 @@ export default class CheckoutForm extends React.Component {
                 <CardBody>
                   <CardText>Credit Card Information <i className="fas fa-question-circle pointer-hover text-warning" href="#" data-tip data-for="tooltip2"/></CardText>
                   <ReactTooltip id="tooltip2" place="right" type="dark" effect="solid">
-                    <span className="font-weight-bold">Note: This is a demo please do not input actual billing or CC information.</span>
+                    <span className="font-weight-bold">Note: This is a demo please do not input actual billing or CC information</span>
                   </ReactTooltip>
                   <InputGroup className="mb-1">
                     <Input placeholder="Credit Card No." name="creditCard" valid={ this.state.validate.creditCardState === 'has-success' } invalid={ this.state.validate.creditCardState === 'has-danger' } onChange={this.onChangeCreditCard} />
